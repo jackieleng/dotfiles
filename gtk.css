@@ -1,0 +1,26 @@
+@define-color light-grey #3c3b37;
+@define-color dark-grey #292929;
+@define-color burnt-yellow #645c3e;
+@define-color black #000000;
+@define-color ubuntu-purple #300A24;
+@define-color greyish #4e4e4e;
+
+
+TerminalWindow .notebook {
+    border: 0; /* set to any # to remove border around the active tab */
+    border-width: 0; /* extra border around the terminal body with gray color */
+    padding: 1; /* thickness of border width around terminal body, including under tab */
+    background-color: shade(@greyish,1); /* color of padding around terminal body */
+    color: #ffffff; /* color of text on tabs */
+    border-radius: 0;  /* everything square (to eliminate some pixels that shine throught */
+}
+
+
+TerminalWindow .notebook tab:active {
+    background-color: shade(@greyish,1); /* color of active tab */
+}
+
+
+TerminalWindow .notebook tab {
+    background-color: shade(@dark-grey,1); /* color of inactive tab */
+}
