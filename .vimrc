@@ -116,8 +116,8 @@ nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
 
 " Easier tab movement
 nnoremap tn :tabnew<CR>
-"nnoremap th :tabprev<CR>
-"nnoremap tl :tabnext<CR>
+nnoremap tj :tabprev<CR>
+nnoremap tk :tabnext<CR>
 
 if has("gui_running")
     " Vim window startup size
