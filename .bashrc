@@ -166,9 +166,9 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
 alias vup='vagrant up'
-alias vsh='vagrant ssh'
-alias vhl='vagrant halt'
-alias vupsh='vagrant up && vagrant ssh'
+alias vssh='vagrant ssh'
+alias vhalt='vagrant halt'
+alias vupssh='vagrant up && vagrant ssh'
 alias vglob='vagrant global-status'
 
 # Fortran compiler stuff
@@ -187,3 +187,4 @@ alias vimb="base16 && vim"
 # NOTE: need to set font of Terminal tab (Ubuntu Mono 12) and Vim tab (Dejavu Sans 10)
 # to roughly the same size as a workaround for a bug with the Vim tab that doesn't
 # redraw/refresh immediatly when switching tabs.
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

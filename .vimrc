@@ -1,6 +1,9 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
+" FZF (external plugin)
+set rtp+=~/.fzf
+
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -21,7 +24,8 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'moll/vim-bbye'
 Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-fugitive'
-Plugin 'davidhalter/jedi-vim'
+Plugin 'junegunn/goyo.vim'
+" Plugin 'davidhalter/jedi-vim'  # makes things a bit slow and buggy
 
 "Color schemes
 Plugin 'altercation/vim-colors-solarized'
@@ -55,7 +59,7 @@ set noswapfile
 set autoread      " Automatically reload file when changed
 set hidden        " Hide buffers instead of closing them
 set t_Co=256      " 256 colors in terminal
-"set number        " line numbers
+set number        " line numbers
 set nowrap        " don't wrap lines
 set showcmd       " show commands
 set showmatch     " set show matching parenthesis
@@ -69,6 +73,14 @@ set term=screen-256color
 
 " For base16 colors in terminal
 let base16colorspace=256
+
+" Handle tmux $TERM quirks in vim. (ampersand means the option 'term')
+if &term =~ '^screen-256color'
+    map <Esc>OH <Home>
+    map! <Esc>OH <Home>
+    map <Esc>OF <End>
+    map! <Esc>OF <End>
+endif
 
 " Color scheme (do `:source ~/.vimrc` when switching)
 syntax enable
@@ -102,6 +114,11 @@ nnoremap <c-l> <c-w>l
 nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
 nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
 
+" Easier tab movement
+nnoremap tn :tabnew<CR>
+"nnoremap th :tabprev<CR>
+"nnoremap tl :tabnext<CR>
+
 if has("gui_running")
     " Vim window startup size
     set lines=100 columns=207
@@ -119,12 +136,12 @@ set list
 set listchars=tab:>.,trail:.,extends:#,nbsp:.
 
 " Always show line numbers, but only in current window.
-augroup line_numbers
-    au!
-    set number
-    au WinEnter * :setlocal number
-    au WinLeave * :setlocal nonumber
-augroup END
+" augroup line_numbers
+"     au!
+"     set number
+"     au WinEnter * :setlocal number
+"     au WinLeave * :setlocal nonumber
+" augroup END
 
 
 " ------------------Plugin specific settings------------------
@@ -181,7 +198,7 @@ endif
 nmap <silent> <c-n> :NERDTreeToggle<CR>
 
 " NERDTree ignores:
-let NERDTreeIgnore = ['\.pyc$', '\.o$', '\.lo$', '\.mod$']
+let NERDTreeIgnore = ['\.pyc$', '\.pyo$', '\.o$', '\.lo$', '\.mod$']
 
 " Show hidden files
 let NERDTreeShowHidden = 1
@@ -192,6 +209,11 @@ set updatetime=750
 " Autosave and load sessions at close/start
 let g:session_autoload = 'yes'
 let g:session_autosave = 'yes'
+
+" If you don't want help windows to be restored:
+set sessionoptions-=help
+" Don't persist options and mappings because it can corrupt sessions.
+set sessionoptions-=options
 
 " Let Syntastic check on file open
 let g:syntastic_check_on_open = 1
