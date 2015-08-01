@@ -172,7 +172,10 @@ alias vupssh='vagrant up && vagrant ssh'
 alias vglob='vagrant global-status'
 
 # Fortran compiler stuff
-source /opt/intel/composer_xe_2015.1.133/bin/compilervars.sh intel64
+COMPVARSFILE="/opt/intel/composer_xe_2015.1.133/bin/compilervars.sh"
+if [ -e $COMPVARSFILE ]; then
+    source /opt/intel/composer_xe_2015.1.133/bin/compilervars.sh intel64
+fi
 
 # Set correct $TERM for tmux
 export TERM=xterm-256color

@@ -68,19 +68,21 @@ set ignorecase    " case insensitive search
 set smartcase     " case insensitive search (except if word constains upper case)
 set mouse=a       " enable mouse use in all modes
 
-" For tmux
-set term=screen-256color
+if !has('nvim')
+    " For tmux
+    set term=screen-256color
+
+    " Handle tmux $TERM quirks in vim. (ampersand means the option 'term')
+    if &term =~ '^screen-256color'
+        map <Esc>OH <Home>
+        map! <Esc>OH <Home>
+        map <Esc>OF <End>
+        map! <Esc>OF <End>
+    endif
+endif
 
 " For base16 colors in terminal
 let base16colorspace=256
-
-" Handle tmux $TERM quirks in vim. (ampersand means the option 'term')
-if &term =~ '^screen-256color'
-    map <Esc>OH <Home>
-    map! <Esc>OH <Home>
-    map <Esc>OF <End>
-    map! <Esc>OF <End>
-endif
 
 " Color scheme (do `:source ~/.vimrc` when switching)
 syntax enable
