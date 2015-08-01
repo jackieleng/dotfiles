@@ -187,6 +187,9 @@ alias base16="[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL"
 # Vim + Base16 shell
 alias vimb="base16 && vim"
 
+# Nvim + Base16 shell
+alias nvimb="base16 && nvim"
+
 # NOTE: need to set font of Terminal tab (Ubuntu Mono 12) and Vim tab (Dejavu Sans 10)
 # to roughly the same size as a workaround for a bug with the Vim tab that doesn't
 # redraw/refresh immediatly when switching tabs.
