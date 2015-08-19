@@ -26,6 +26,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-fugitive'
 Plugin 'junegunn/goyo.vim'
 " Plugin 'davidhalter/jedi-vim'  # makes things a bit slow and buggy
+Plugin 'christoomey/vim-tmux-navigator'
 
 "Color schemes
 Plugin 'altercation/vim-colors-solarized'
@@ -219,5 +220,13 @@ set sessionoptions-=options
 
 " Let Syntastic check on file open
 let g:syntastic_check_on_open = 1
+
+" Custom vim-tmux-navigator settings
+let g:tmux_navigator_no_mappings = 1
+nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
+nnoremap <silent> <c-j> :TmuxNavigateDown<cr>
+nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
+nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
+" nnoremap <silent> {c-\} :TmuxNavigatePrevious<cr>  " don't need
 
 " ------------------------------------------------------------
