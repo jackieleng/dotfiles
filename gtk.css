@@ -9,7 +9,7 @@
 TerminalWindow .notebook {
     border: 0; /* set to any # to remove border around the active tab */
     border-width: 0; /* extra border around the terminal body with gray color */
-    padding: 1; /* thickness of border width around terminal body, including under tab */
+    padding: 0; /* thickness of border width around terminal body, including under tab */
     background-color: shade(@greyish,1); /* color of padding around terminal body */
     color: #ffffff; /* color of text on tabs */
     border-radius: 0;  /* everything square (to eliminate some pixels that shine throught */
