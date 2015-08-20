@@ -87,7 +87,7 @@ let base16colorspace=256
 
 " Color scheme (do `:source ~/.vimrc` when switching)
 syntax enable
-colorscheme base16-ocean
+colorscheme base16-default
 set background=dark
 
 " This is needed for solarized because the sign column is hard to read with
