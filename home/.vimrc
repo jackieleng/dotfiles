@@ -49,25 +49,27 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 
 
-
-
+" ------------------------------------------------------------
 
 " Turn backup off, since most stuff is in SVN, git et.c anyway...
 set nobackup
 set nowb
 set noswapfile
 
-set autoread      " Automatically reload file when changed
-set hidden        " Hide buffers instead of closing them
-set t_Co=256      " 256 colors in terminal
-set number        " line numbers
-set nowrap        " don't wrap lines
-set showcmd       " show commands
-set showmatch     " set show matching parenthesis
-set hlsearch      " highlight search
-set ignorecase    " case insensitive search
-set smartcase     " case insensitive search (except if word constains upper case)
-set mouse=a       " enable mouse use in all modes
+set autoread          " Automatically reload file when changed
+set hidden            " Hide buffers instead of closing them
+set t_Co=256          " 256 colors in terminal
+" set number            " line numbers
+set nowrap            " don't wrap lines
+set showcmd           " show commands
+set showmatch         " set show matching parenthesis
+set hlsearch          " highlight search
+set ignorecase        " case insensitive search
+set smartcase         " case insensitive search (except if word constains upper case)
+set mouse=a           " enable mouse use in all modes
+silent! set winwidth=85       " Automatic horizontal resizing
+silent! set winminwidth=45    " The minimal width
+" set winheight=50  " Automatic vertical resizing
 
 if !has('nvim')
     " For tmux
@@ -117,6 +119,9 @@ nnoremap <c-l> <c-w>l
 nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
 nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
 
+" Toggle line numbers
+nmap <F12> :set invnumber<CR>
+
 " Easier tab movement
 nnoremap tc :tabnew<CR>
 nnoremap tp :tabprev<CR>
@@ -125,6 +130,8 @@ nnoremap tn :tabnext<CR>
 if has("gui_running")
     " Vim window startup size
     set lines=100 columns=207
+    " Set the font
+    set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 10
 endif
 
 set tabstop=4     " a tab is four spaces
@@ -170,9 +177,6 @@ let g:airline_powerline_fonts = 1
 
 " Disable syntastic integration
 let g:airline#extensions#syntastic#enabled = 0
-
-" Set the font
-set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 10
 
 " Nicer airline symbols
 if !exists('g:airline_symbols')
