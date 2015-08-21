@@ -27,6 +27,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'junegunn/goyo.vim'
 " Plugin 'davidhalter/jedi-vim'  # makes things a bit slow and buggy
 Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'joeytwiddle/sexy_scroller.vim'
 
 "Color schemes
 Plugin 'altercation/vim-colors-solarized'
