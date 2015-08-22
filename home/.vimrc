@@ -100,34 +100,6 @@ set background=dark
 " Search highlight color (hi = highlight)
 " hi Search guibg=LightGreen
 
-" Press Space to turn off highlighting and clear any message already displayed.
-nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
-
-" Map horizontal scrolling to CTRL-L/H (note that CTRL-L is graphic reload on default)
-" map <C-L> 3zl
-" map <C-H> 3zh
-" Map vertical scroll
-" map <C-K> <C-Y>
-" map <C-J> <C-E>
-
-" Easier window switching
-nnoremap <c-j> <c-w>j
-nnoremap <c-k> <c-w>k
-nnoremap <c-h> <c-w>h
-nnoremap <c-l> <c-w>l
-
-" Resizing with leader key
-nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
-nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
-
-" Toggle line numbers
-nmap <F12> :set invnumber<CR>
-
-" Easier tab movement
-nnoremap tc :tabnew<CR>
-nnoremap tp :tabprev<CR>
-nnoremap tn :tabnext<CR>
-
 if has("gui_running")
     " Vim window startup size
     set lines=100 columns=207
@@ -153,6 +125,50 @@ set listchars=tab:>.,trail:.,extends:#,nbsp:.
 "     au WinEnter * :setlocal number
 "     au WinLeave * :setlocal nonumber
 " augroup END
+
+
+" ------------
+" Key mappings
+" ------------
+
+" Leader key
+let mapleader = ","
+
+" Press Space to turn off highlighting and clear any message already displayed.
+nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
+
+" Map horizontal scrolling to CTRL-L/H (note that CTRL-L is graphic reload on default)
+" map <C-L> 3zl
+" map <C-H> 3zh
+" Map vertical scroll
+" map <C-K> <C-Y>
+" map <C-J> <C-E>
+
+" Easier window switching
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
+
+" Resizing with leader key
+nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
+nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
+
+" FZF
+nnoremap <silent> <Leader>fzf :FZF<CR>
+
+" Toggle line numbers
+nmap <F12> :set invnumber<CR>
+
+" Easier tab movement
+nnoremap <Leader>tc :tabnew<CR>
+nnoremap <Leader>tp :tabprev<CR>
+nnoremap <Leader>tn :tabnext<CR>
+
+" Easier buffer switching
+nnoremap <F5> :buffers<CR>:buffer<Space>
+nnoremap <Leader>bp :bprevious<CR>
+nnoremap <Leader>bn :bnext<CR>
 
 
 " ------------------Plugin specific settings------------------
