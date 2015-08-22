@@ -27,7 +27,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'junegunn/goyo.vim'
 " Plugin 'davidhalter/jedi-vim'  # makes things a bit slow and buggy
 Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'joeytwiddle/sexy_scroller.vim'
+Plugin 'jackieleng/sexy_scroller.vim'  " fork of joeytwiddle's repo
 
 "Color schemes
 Plugin 'altercation/vim-colors-solarized'
@@ -170,6 +170,23 @@ nnoremap <F5> :buffers<CR>:buffer<Space>
 nnoremap <Leader>bp :bprevious<CR>
 nnoremap <Leader>bn :bnext<CR>
 
+" nnoremap <silent> <MouseDown> <MouseDown>:call s:CheckForChange(1)<CR>
+" nnoremap <silent> <MouseUp> <MouseUp>:call s:CheckForChange(1)<CR>
+
+nnoremap <silent> <C-U> <C-U>:call SexyScroller_ScrollToCursor(1)<CR>
+nnoremap <silent> <C-D> <C-D>:call SexyScroller_ScrollToCursor(1)<CR>
+nnoremap <silent> <C-F> <C-F>:call SexyScroller_ScrollToCursor(1)<CR>
+nnoremap <silent> <C-B> <C-B>:call SexyScroller_ScrollToCursor(1)<CR>
+nnoremap <silent> <PageUp> <PageUp>:call SexyScroller_ScrollToCursor(1)<CR>
+nnoremap <silent> <PageDown> <PageDown>:call SexyScroller_ScrollToCursor(1)<CR>
+
+let g:SexyScroller_AutocmdsEnabled = 0
+
+augroup Custom_Smooth_Scroller
+  autocmd!
+  autocmd WinEnter * call SexyScroller_ScrollToCursor(0)
+  "autocmd InsertLeave * call SexyScroller_ScrollToCursor(0)
+augroup END
 
 " ------------------Plugin specific settings------------------
 
@@ -215,13 +232,13 @@ let g:airline_symbols.readonly = "🔒"
 " Custom mode names in g:airline_section_a
 let g:airline_mode_map = {
   \ '__' : '-',
-  \ 'n'  : '🗻',
-  \ 'i'  : '🌋',
+  \ 'n'  : '🗻 ',
+  \ 'i'  : '🌋 ',
   \ 'R'  : 'R',
   \ 'c'  : 'C',
-  \ 'v'  : '⛰',
-  \ 'V'  : '⛰',
-  \ '' : '⛰',
+  \ 'v'  : '⛰ ',
+  \ 'V'  : '⛰ ',
+  \ '' : '⛰ ',
   \ 's'  : 'S',
   \ 'S'  : 'S',
   \ '' : 'S',
@@ -265,4 +282,6 @@ nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
 nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
 " nnoremap <silent> {c-\} :TmuxNavigatePrevious<cr>  " don't need
 
+" Sexy Scroller mouse workarounds
+" let g:SexyScroller_MinLines = 15
 " ------------------------------------------------------------
