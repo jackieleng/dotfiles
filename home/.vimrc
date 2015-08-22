@@ -173,8 +173,8 @@ let g:airline#extensions#whitespace#enabled = 0
 " Disable gitgutter hunks in airline
 let g:airline#extensions#hunks#enabled = 0
 
-" Use powerline fonts for airline
-let g:airline_powerline_fonts = 1
+" Do not use powerline fonts for airline
+let g:airline_powerline_fonts = 0
 
 " Disable syntastic integration
 let g:airline#extensions#syntastic#enabled = 0
@@ -184,20 +184,35 @@ if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
 
-" unicode symbols
-" set encoding=utf-8
-" let g:airline_left_sep = '»'
-" let g:airline_left_sep = '▶'
-" let g:airline_right_sep = '«'
-" let g:airline_right_sep = '◀'
-" let g:airline_symbols.linenr = '␊'
-" let g:airline_symbols.linenr = '␤'
-" let g:airline_symbols.linenr = '¶'
-" let g:airline_symbols.branch = '⎇'
-" let g:airline_symbols.paste = 'ρ'
-" let g:airline_symbols.paste = 'Þ'
-" let g:airline_symbols.paste = '∥'
-" let g:airline_symbols.whitespace = 'Ξ'
+" airline custom symbols when not using powerline fonts
+set encoding=utf-8
+let g:airline_left_sep = ""
+let g:airline_right_sep = ""
+let g:airline_symbols.linenr = "\u21aa"
+let g:airline_symbols.paste = "∥"
+let g:airline_symbols.branch = "⎇ "  " note the extra space
+let g:airline_symbols.space = " "
+let g:airline_symbols.whitespace = "Ξ"
+let g:airline_symbols.modified = '+'
+let g:airline_symbols.readonly = "🔒"
+
+" Custom mode names in g:airline_section_a
+let g:airline_mode_map = {
+  \ '__' : '-',
+  \ 'n'  : '🗻',
+  \ 'i'  : '🌋',
+  \ 'R'  : 'R',
+  \ 'c'  : 'C',
+  \ 'v'  : '⛰',
+  \ 'V'  : '⛰',
+  \ '' : '⛰',
+  \ 's'  : 'S',
+  \ 'S'  : 'S',
+  \ '' : 'S',
+  \ }
+
+" Make linenr, column a bit tidier
+let g:airline_section_z = '%3p%% ' . g:airline_symbols.linenr . ' %l:%c'
 
 " Start NERDTree on startup (with cursor in main window) TODO for linux
 " autocmd VimEnter * NERDTree | wincmd p
