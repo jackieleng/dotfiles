@@ -28,8 +28,9 @@ Plugin 'junegunn/goyo.vim'
 " Plugin 'davidhalter/jedi-vim'  # makes things a bit slow and buggy
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'jackieleng/sexy_scroller.vim'  " fork of joeytwiddle's repo
-Plugin 'sjl/gundo.vim'
+Plugin 'simnalamburt/vim-mundo'  " fork of Gundo with neovim support
 Plugin 'kshenoy/vim-signature'
+Plugin 'scrooloose/nerdcommenter'
 
 "Color schemes
 Plugin 'altercation/vim-colors-solarized'
@@ -110,7 +111,8 @@ if has("gui_running")
     set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 10
 endif
 
-set tabstop=4     " a tab is four spaces
+set tabstop=8     " Linux kernel code default, also tabs are replaced by 8 spaces by Python
+set softtabstop=4 " number of columns when hitting tab in insert mode
 set expandtab     " expand tab to spaces
 set shiftwidth=4  " number of spaces to use for autoindenting
 
