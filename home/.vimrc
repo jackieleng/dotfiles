@@ -32,7 +32,12 @@ Plugin 'simnalamburt/vim-mundo'  " fork of Gundo with neovim support
 Plugin 'kshenoy/vim-signature'
 Plugin 'scrooloose/nerdcommenter'
 
-"Color schemes
+" Tagbar needs ctags (sudo apt-get install exuberant-ctags)
+Plugin 'majutsushi/tagbar'
+
+Plugin 'haya14busa/incsearch.vim'
+
+" Color schemes
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'chriskempson/base16-vim'
 Plugin 'tomasr/molokai'
@@ -53,7 +58,11 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 
 
-" ------------------------------------------------------------
+
+
+" --------------------
+" Settings and options
+" --------------------
 
 " Turn backup off, since most stuff is in SVN, git et.c anyway...
 set nobackup
@@ -67,6 +76,7 @@ set t_Co=256          " 256 colors in terminal
 set nowrap            " don't wrap lines
 set showcmd           " show commands
 set showmatch         " set show matching parenthesis
+set incsearch         " incremental search
 set hlsearch          " highlight search
 set ignorecase        " case insensitive search
 set smartcase         " case insensitive search (except if word constains upper case)
@@ -132,15 +142,14 @@ set listchars=tab:>.,trail:.,extends:#,nbsp:.
 " augroup END
 
 
+
+
 " ------------
 " Key mappings
 " ------------
 
 " Leader key
 let mapleader = ","
-
-" Press Space to turn off highlighting and clear any message already displayed.
-nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 
 " Map horizontal scrolling to CTRL-L/H (note that CTRL-L is graphic reload on default)
 " map <C-L> 3zl
@@ -199,9 +208,15 @@ if g:SexyScroller_AutocmdsEnabled == 0
       autocmd InsertLeave * call SexyScroller_ScrollToCursor(0)
     augroup END
 endif
+" Sexy Scroller mouse workarounds
+" let g:SexyScroller_MinLines = 15
 
-" ------------------Plugin specific settings------------------
 
+
+
+" ---------------
+" Plugin settings
+" ---------------
 
 " Let airline/statusline appear all the time
 set laststatus=2
@@ -296,6 +311,18 @@ nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
 nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
 " nnoremap <silent> {c-\} :TmuxNavigatePrevious<cr>  " don't need
 
-" Sexy Scroller mouse workarounds
-" let g:SexyScroller_MinLines = 15
-" ------------------------------------------------------------
+" Incsearch
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
+" :h g:incsearch#auto_nohlsearch
+let g:incsearch#auto_nohlsearch = 1
+map n  <Plug>(incsearch-nohl-n)
+map N  <Plug>(incsearch-nohl-N)
+map *  <Plug>(incsearch-nohl-*)
+map #  <Plug>(incsearch-nohl-#)
+map g* <Plug>(incsearch-nohl-g*)
+map g# <Plug>(incsearch-nohl-g#)
+
+" Tagbar
+nmap <F8> :TagbarToggle<CR>
