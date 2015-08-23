@@ -28,6 +28,8 @@ Plugin 'junegunn/goyo.vim'
 " Plugin 'davidhalter/jedi-vim'  # makes things a bit slow and buggy
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'jackieleng/sexy_scroller.vim'  " fork of joeytwiddle's repo
+Plugin 'sjl/gundo.vim'
+Plugin 'kshenoy/vim-signature'
 
 "Color schemes
 Plugin 'altercation/vim-colors-solarized'
@@ -71,6 +73,7 @@ set mouse=a           " enable mouse use in all modes
 silent! set winwidth=85       " Automatic horizontal resizing
 silent! set winminwidth=45    " The minimal width
 " set winheight=50  " Automatic vertical resizing
+let &showbreak='↪ '
 
 if !has('nvim')
     " For tmux
@@ -173,20 +176,27 @@ nnoremap <Leader>bn :bnext<CR>
 " nnoremap <silent> <MouseDown> <MouseDown>:call s:CheckForChange(1)<CR>
 " nnoremap <silent> <MouseUp> <MouseUp>:call s:CheckForChange(1)<CR>
 
-nnoremap <silent> <C-U> <C-U>:call SexyScroller_ScrollToCursor(1)<CR>
-nnoremap <silent> <C-D> <C-D>:call SexyScroller_ScrollToCursor(1)<CR>
-nnoremap <silent> <C-F> <C-F>:call SexyScroller_ScrollToCursor(1)<CR>
-nnoremap <silent> <C-B> <C-B>:call SexyScroller_ScrollToCursor(1)<CR>
-nnoremap <silent> <PageUp> <PageUp>:call SexyScroller_ScrollToCursor(1)<CR>
-nnoremap <silent> <PageDown> <PageDown>:call SexyScroller_ScrollToCursor(1)<CR>
-
 let g:SexyScroller_AutocmdsEnabled = 0
 
-augroup Custom_Smooth_Scroller
-  autocmd!
-  autocmd WinEnter * call SexyScroller_ScrollToCursor(0)
-  "autocmd InsertLeave * call SexyScroller_ScrollToCursor(0)
-augroup END
+if g:SexyScroller_AutocmdsEnabled == 0
+    nnoremap <silent> <C-U> <C-U>:call SexyScroller_ScrollToCursor(1)<CR>
+    nnoremap <silent> <C-D> <C-D>:call SexyScroller_ScrollToCursor(1)<CR>
+    nnoremap <silent> <C-F> <C-F>:call SexyScroller_ScrollToCursor(1)<CR>
+    nnoremap <silent> <C-B> <C-B>:call SexyScroller_ScrollToCursor(1)<CR>
+    nnoremap <silent> <PageUp> <PageUp>:call SexyScroller_ScrollToCursor(1)<CR>
+    nnoremap <silent> <PageDown> <PageDown>:call SexyScroller_ScrollToCursor(1)<CR>
+
+    augroup Custom_Smooth_Scroller
+      autocmd!
+      autocmd WinEnter * call SexyScroller_ScrollToCursor(0)
+      "autocmd BufWinEnter * call SexyScroller_ScrollToCursor(0) | echo "bufwinenter"
+      "autocmd BufLeave * call SexyScroller_ScrollToCursor(0)
+      "autocmd BufEnter * call SexyScroller_ScrollToCursor(0)
+      "autocmd BufWinLeave * call SexyScroller_ScrollToCursor(0)
+      "autocmd BufWinEnter * call SexyScroller_ScrollToCursor(0)
+      autocmd InsertLeave * call SexyScroller_ScrollToCursor(0)
+    augroup END
+endif
 
 " ------------------Plugin specific settings------------------
 
@@ -221,7 +231,7 @@ endif
 set encoding=utf-8
 let g:airline_left_sep = ""
 let g:airline_right_sep = ""
-let g:airline_symbols.linenr = "\u21aa"
+let g:airline_symbols.linenr = ""
 let g:airline_symbols.paste = "∥"
 let g:airline_symbols.branch = "⎇ "  " note the extra space
 let g:airline_symbols.space = " "
@@ -230,11 +240,13 @@ let g:airline_symbols.modified = '+'
 let g:airline_symbols.readonly = "🔒"
 
 " Custom mode names in g:airline_section_a
+" The symbols will work if you do: sudo apt-get install ttf-ancient-fonts
+" This installs a Symbola font
 let g:airline_mode_map = {
   \ '__' : '-',
   \ 'n'  : '🗻 ',
   \ 'i'  : '🌋 ',
-  \ 'R'  : 'R',
+  \ 'R'  : '🌊 ',
   \ 'c'  : 'C',
   \ 'v'  : '⛰ ',
   \ 'V'  : '⛰ ',
@@ -245,7 +257,7 @@ let g:airline_mode_map = {
   \ }
 
 " Make linenr, column a bit tidier
-let g:airline_section_z = '%3p%% ' . g:airline_symbols.linenr . ' %l:%c'
+let g:airline_section_z = '%3p%% ' . g:airline_symbols.linenr . ' %l,%c'
 
 " Start NERDTree on startup (with cursor in main window) TODO for linux
 " autocmd VimEnter * NERDTree | wincmd p
