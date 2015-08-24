@@ -197,10 +197,10 @@ let g:SexyScroller_AutocmdsEnabled = 0
 
 if g:SexyScroller_AutocmdsEnabled == 0
     " Note: pretty crappy workaround because of double call, but it works...
-    nnoremap <silent> <C-U> :call SexyScroller_ScrollToCursor(0)<C-U>:call SexyScroller_ScrollToCursor(1)<CR>
-    nnoremap <silent> <C-D> :call SexyScroller_ScrollToCursor(0)<C-D>:call SexyScroller_ScrollToCursor(1)<CR>
-    nnoremap <silent> <C-F> :call SexyScroller_ScrollToCursor(0)<C-F>:call SexyScroller_ScrollToCursor(1)<CR>
-    nnoremap <silent> <C-B> :call SexyScroller_ScrollToCursor(0)<C-B>:call SexyScroller_ScrollToCursor(1)<CR>
+    nnoremap <silent> <C-U> :call SexyScroller_ScrollToCursor(0)<CR><C-U>:call SexyScroller_ScrollToCursor(1)<CR>
+    nnoremap <silent> <C-D> :call SexyScroller_ScrollToCursor(0)<CR><C-D>:call SexyScroller_ScrollToCursor(1)<CR>
+    nnoremap <silent> <C-F> :call SexyScroller_ScrollToCursor(0)<CR><C-F>:call SexyScroller_ScrollToCursor(1)<CR>
+    nnoremap <silent> <C-B> :call SexyScroller_ScrollToCursor(0)<CR><C-B>:call SexyScroller_ScrollToCursor(1)<CR>
     nnoremap <silent> <PageUp> :call SexyScroller_ScrollToCursor(0)<CR><PageUp>:call SexyScroller_ScrollToCursor(1)<CR>
     nnoremap <silent> <PageDown> :call SexyScroller_ScrollToCursor(0)<CR><PageDown>:call SexyScroller_ScrollToCursor(1)<CR>
 
