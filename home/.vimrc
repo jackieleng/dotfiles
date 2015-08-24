@@ -25,7 +25,7 @@ Plugin 'moll/vim-bbye'
 Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-fugitive'
 Plugin 'junegunn/goyo.vim'
-" Plugin 'davidhalter/jedi-vim'  # makes things a bit slow and buggy
+" Plugin 'davidhalter/jedi-vim'  " makes things a bit slow and buggy
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'jackieleng/sexy_scroller.vim'  " fork of joeytwiddle's repo
 Plugin 'simnalamburt/vim-mundo'  " fork of Gundo with neovim support
@@ -187,25 +187,34 @@ nnoremap <Leader>bn :bnext<CR>
 " nnoremap <silent> <MouseDown> <MouseDown>:call s:CheckForChange(1)<CR>
 " nnoremap <silent> <MouseUp> <MouseUp>:call s:CheckForChange(1)<CR>
 
+" When switching buffers, preserve window view.
+"if v:version >= 700
+  "au BufLeave * if !&diff | let b:winview = winsaveview() | endif
+  "au BufEnter * if exists('b:winview') && !&diff | call winrestview(b:winview) | unlet! b:winview | endif
+"endif
+
 let g:SexyScroller_AutocmdsEnabled = 0
 
 if g:SexyScroller_AutocmdsEnabled == 0
-    nnoremap <silent> <C-U> <C-U>:call SexyScroller_ScrollToCursor(1)<CR>
-    nnoremap <silent> <C-D> <C-D>:call SexyScroller_ScrollToCursor(1)<CR>
-    nnoremap <silent> <C-F> <C-F>:call SexyScroller_ScrollToCursor(1)<CR>
-    nnoremap <silent> <C-B> <C-B>:call SexyScroller_ScrollToCursor(1)<CR>
-    nnoremap <silent> <PageUp> <PageUp>:call SexyScroller_ScrollToCursor(1)<CR>
-    nnoremap <silent> <PageDown> <PageDown>:call SexyScroller_ScrollToCursor(1)<CR>
+    " Note: pretty crappy workaround because of double call, but it works...
+    nnoremap <silent> <C-U> :call SexyScroller_ScrollToCursor(0)<C-U>:call SexyScroller_ScrollToCursor(1)<CR>
+    nnoremap <silent> <C-D> :call SexyScroller_ScrollToCursor(0)<C-D>:call SexyScroller_ScrollToCursor(1)<CR>
+    nnoremap <silent> <C-F> :call SexyScroller_ScrollToCursor(0)<C-F>:call SexyScroller_ScrollToCursor(1)<CR>
+    nnoremap <silent> <C-B> :call SexyScroller_ScrollToCursor(0)<C-B>:call SexyScroller_ScrollToCursor(1)<CR>
+    nnoremap <silent> <PageUp> :call SexyScroller_ScrollToCursor(0)<CR><PageUp>:call SexyScroller_ScrollToCursor(1)<CR>
+    nnoremap <silent> <PageDown> :call SexyScroller_ScrollToCursor(0)<CR><PageDown>:call SexyScroller_ScrollToCursor(1)<CR>
 
     augroup Custom_Smooth_Scroller
       autocmd!
       autocmd WinEnter * call SexyScroller_ScrollToCursor(0)
+      "autocmd BufWinEnter * call SexyScroller_ScrollToCursor(0)
       "autocmd BufWinEnter * call SexyScroller_ScrollToCursor(0) | echo "bufwinenter"
-      "autocmd BufLeave * call SexyScroller_ScrollToCursor(0)
-      "autocmd BufEnter * call SexyScroller_ScrollToCursor(0)
+      "autocmd BufWinLeave * call SexyScroller_ScrollToCursor(0)
+      "autocmd BufReadPost * call SexyScroller_ScrollToCursor(0)
+      " autocmd BufEnter * call SexyScroller_ScrollToCursor(1)
       "autocmd BufWinLeave * call SexyScroller_ScrollToCursor(0)
       "autocmd BufWinEnter * call SexyScroller_ScrollToCursor(0)
-      autocmd InsertLeave * call SexyScroller_ScrollToCursor(0)
+      "autocmd InsertLeave * call SexyScroller_ScrollToCursor(0)
     augroup END
 endif
 " Sexy Scroller mouse workarounds
