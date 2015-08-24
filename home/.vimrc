@@ -28,8 +28,8 @@ Plugin 'junegunn/goyo.vim'
 " Plugin 'davidhalter/jedi-vim'  " makes things a bit slow and buggy
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'jackieleng/sexy_scroller.vim'  " fork of joeytwiddle's repo
-Plugin 'simnalamburt/vim-mundo'  " fork of Gundo with neovim support
-Plugin 'kshenoy/vim-signature'
+"Plugin 'simnalamburt/vim-mundo'  " fork of Gundo with neovim support
+"Plugin 'kshenoy/vim-signature'
 Plugin 'scrooloose/nerdcommenter'
 
 " Tagbar needs ctags (sudo apt-get install exuberant-ctags)
