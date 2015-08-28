@@ -141,7 +141,11 @@ set listchars=tab:>.,trail:.,extends:#,nbsp:.
 "     au WinLeave * :setlocal nonumber
 " augroup END
 
-
+" autoread is not enough, you must still trigger reload with :e, :! or :checktime
+augroup AutoFileReload
+    au!
+    au FocusGained,BufEnter * :silent! !
+augroup END
 
 
 " ------------
@@ -176,8 +180,8 @@ nmap <F12> :set invnumber<CR>
 
 " Easier tab movement
 nnoremap <Leader>tc :tabnew<CR>
-nnoremap <Leader>tp :tabprev<CR>
-nnoremap <Leader>tn :tabnext<CR>
+"nnoremap <Leader>tp :tabprev<CR>
+"nnoremap <Leader>tn :tabnext<CR>
 
 " Easier buffer switching
 nnoremap <F5> :buffers<CR>:buffer<Space>
