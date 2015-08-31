@@ -85,6 +85,7 @@ silent! set winwidth=85       " Automatic horizontal resizing
 silent! set winminwidth=45    " The minimal width
 " set winheight=50  " Automatic vertical resizing
 let &showbreak='↪ '
+set scrolloff=1       " lines visible below or above cursor
 
 if !has('nvim')
     " For tmux
