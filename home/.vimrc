@@ -25,7 +25,7 @@ Plugin 'moll/vim-bbye'
 Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-fugitive'
 Plugin 'junegunn/goyo.vim'
-" Plugin 'davidhalter/jedi-vim'  " makes things a bit slow and buggy
+Plugin 'davidhalter/jedi-vim'  " need to do: 'pip install neovim' or compile with python extensions
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'jackieleng/sexy_scroller.vim'  " fork of joeytwiddle's repo
 "Plugin 'simnalamburt/vim-mundo'  " fork of Gundo with neovim support
@@ -339,3 +339,7 @@ map g# <Plug>(incsearch-nohl-g#)
 
 " Tagbar
 nmap <F8> :TagbarToggle<CR>
+
+" Jedi-vim
+let g:jedi#show_call_signatures = 0  " disable arg pop-up
+let g:jedi#popup_on_dot = 0  " disable automatic completion on dot (use <C-Space>)
