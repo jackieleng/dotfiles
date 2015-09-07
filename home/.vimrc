@@ -259,6 +259,8 @@ if !exists('g:airline_symbols')
 endif
 
 " airline custom symbols when not using powerline fonts
+" The unicode symbols will work if you do: sudo apt-get install ttf-ancient-fonts
+" This installs a Symbola font
 set encoding=utf-8
 let g:airline_left_sep = ""
 let g:airline_right_sep = ""
@@ -268,20 +270,18 @@ let g:airline_symbols.branch = "⎇ "  " note the extra space
 let g:airline_symbols.space = " "
 let g:airline_symbols.whitespace = "Ξ"
 let g:airline_symbols.modified = '+'
-let g:airline_symbols.readonly = "🔒"
+let g:airline_symbols.readonly = "RO"
 
 " Custom mode names in g:airline_section_a
-" The symbols will work if you do: sudo apt-get install ttf-ancient-fonts
-" This installs a Symbola font
 let g:airline_mode_map = {
   \ '__' : '-',
-  \ 'n'  : '🗻 ',
-  \ 'i'  : '🌋 ',
-  \ 'R'  : '🌊 ',
+  \ 'n'  : 'N',
+  \ 'i'  : 'I',
+  \ 'R'  : 'R',
   \ 'c'  : 'C',
-  \ 'v'  : '⛰ ',
-  \ 'V'  : '⛰ ',
-  \ '' : '⛰ ',
+  \ 'v'  : 'V',
+  \ 'V'  : 'V',
+  \ '' : 'V',
   \ 's'  : 'S',
   \ 'S'  : 'S',
   \ '' : 'S',
