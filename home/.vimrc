@@ -153,11 +153,14 @@ augroup END
 " Key mappings
 " ------------
 
-" Easier escape from insert mode
-imap jj <Esc>
-
 " Leader key
 let mapleader = ","
+
+" Press Space to turn off highlighting and clear any message already displayed
+nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
+
+" Easier escape from insert mode
+imap jj <Esc>
 
 " Map horizontal scrolling to CTRL-L/H (note that CTRL-L is graphic reload on default)
 " map <C-L> 3zl
@@ -333,7 +336,7 @@ map /  <Plug>(incsearch-forward)
 map ?  <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
 " :h g:incsearch#auto_nohlsearch
-let g:incsearch#auto_nohlsearch = 1
+let g:incsearch#auto_nohlsearch = 0
 map n  <Plug>(incsearch-nohl-n)
 map N  <Plug>(incsearch-nohl-N)
 map *  <Plug>(incsearch-nohl-*)
