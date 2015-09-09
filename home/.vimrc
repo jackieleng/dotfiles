@@ -153,6 +153,9 @@ augroup END
 " Key mappings
 " ------------
 
+" Easier escape from insert mode
+imap jj <Esc>
+
 " Leader key
 let mapleader = ","
 
