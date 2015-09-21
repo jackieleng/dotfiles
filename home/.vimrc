@@ -119,7 +119,12 @@ if has("gui_running")
     " Vim window startup size
     set lines=100 columns=207
     " Set the font
-    set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 10
+    set guifont=DejaVu\ Sans\ Mono\ 10
+
+    set guioptions-=m  "remove menu bar
+    set guioptions-=T  "remove toolbar
+    set guioptions-=r  "remove right-hand scroll bar
+    set guioptions-=L  "remove left-hand scroll bar
 endif
 
 set tabstop=8     " Linux kernel code default, also tabs are replaced by 8 spaces by Python
@@ -208,16 +213,16 @@ let g:SexyScroller_AutocmdsEnabled = 0
 
 if g:SexyScroller_AutocmdsEnabled == 0
     " Note: pretty crappy workaround because of double call, but it works...
-    nnoremap <silent> <C-U> :call SexyScroller_ScrollToCursor(0)<CR><C-U>:call SexyScroller_ScrollToCursor(1)<CR>
-    nnoremap <silent> <C-D> :call SexyScroller_ScrollToCursor(0)<CR><C-D>:call SexyScroller_ScrollToCursor(1)<CR>
-    nnoremap <silent> <C-F> :call SexyScroller_ScrollToCursor(0)<CR><C-F>:call SexyScroller_ScrollToCursor(1)<CR>
-    nnoremap <silent> <C-B> :call SexyScroller_ScrollToCursor(0)<CR><C-B>:call SexyScroller_ScrollToCursor(1)<CR>
-    nnoremap <silent> <PageUp> :call SexyScroller_ScrollToCursor(0)<CR><PageUp>:call SexyScroller_ScrollToCursor(1)<CR>
-    nnoremap <silent> <PageDown> :call SexyScroller_ScrollToCursor(0)<CR><PageDown>:call SexyScroller_ScrollToCursor(1)<CR>
+    nnoremap <silent> <C-U> :call g:SexyScroller_ScrollToCursor(0)<CR><C-U>:call g:SexyScroller_ScrollToCursor(1)<CR>
+    nnoremap <silent> <C-D> :call g:SexyScroller_ScrollToCursor(0)<CR><C-D>:call g:SexyScroller_ScrollToCursor(1)<CR>
+    nnoremap <silent> <C-F> :call g:SexyScroller_ScrollToCursor(0)<CR><C-F>:call g:SexyScroller_ScrollToCursor(1)<CR>
+    nnoremap <silent> <C-B> :call g:SexyScroller_ScrollToCursor(0)<CR><C-B>:call g:SexyScroller_ScrollToCursor(1)<CR>
+    nnoremap <silent> <PageUp> :call g:SexyScroller_ScrollToCursor(0)<CR><PageUp>:call g:SexyScroller_ScrollToCursor(1)<CR>
+    nnoremap <silent> <PageDown> :call g:SexyScroller_ScrollToCursor(0)<CR><PageDown>:call g:SexyScroller_ScrollToCursor(1)<CR>
 
     augroup Custom_Smooth_Scroller
       autocmd!
-      autocmd WinEnter * call SexyScroller_ScrollToCursor(0)
+      autocmd WinEnter * call g:SexyScroller_ScrollToCursor(0)
       "autocmd BufWinEnter * call SexyScroller_ScrollToCursor(0)
       "autocmd BufWinEnter * call SexyScroller_ScrollToCursor(0) | echo "bufwinenter"
       "autocmd BufWinLeave * call SexyScroller_ScrollToCursor(0)
