@@ -107,7 +107,7 @@ if has("gui_running")
 
     " Color scheme (do `:source ~/.vimrc` when switching)
     syntax enable
-    colorscheme base16-default
+    colorscheme base16-ocean
     set background=dark
 else
     " Solarized
