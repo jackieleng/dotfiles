@@ -86,6 +86,7 @@ silent! set winminwidth=45    " The minimal width
 " set winheight=50  " Automatic vertical resizing
 let &showbreak='↪ '
 set scrolloff=1       " lines visible below or above cursor
+set shell=/bin/bash   " syntastic needs bash (and not e.g. fish)
 
 if !has('nvim')
     " For tmux
