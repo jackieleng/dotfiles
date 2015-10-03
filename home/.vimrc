@@ -174,9 +174,6 @@ let mapleader = ","
 " Press Space to turn off highlighting and clear any message already displayed
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 
-" Easier escape from insert mode
-imap jj <Esc>
-
 " Map horizontal scrolling to CTRL-L/H (note that CTRL-L is graphic reload on default)
 " map <C-L> 3zl
 " map <C-H> 3zh
