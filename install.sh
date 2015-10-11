@@ -65,7 +65,7 @@ if [ ! -d ~/.fzf ]; then
     ~/.fzf/install
 fi
 
-if [ ! -d ~/.git-prompt.sh ]; then
+if [ ! -e ~/.git-prompt.sh ]; then
     echo "~/.git-prompt.sh not found; downloading..."
     curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh -o ~/.git-prompt.sh
 fi
