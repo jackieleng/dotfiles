@@ -1,6 +1,6 @@
 STARTDIR=$PWD
 
-# symlinking
+# Symlinking dotfiles in home dir
 echo "cd into ./home"
 cd home
 FILES=$(ls -a)
