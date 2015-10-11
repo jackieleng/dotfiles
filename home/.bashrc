@@ -114,37 +114,24 @@ if ! shopt -oq posix; then
 fi
 
 
+# Prompt
+source ~/.git-prompt.sh  # get this from the git source
+GIT_PS1_SHOWDIRTYSTATE=1
+GIT_PS1_SHOWSTASHSTATE=1
+GIT_PS1_SHOWUNTRACKEDFILES=1
+GIT_PS1_SHOWCOLORHINTS=1
 
-############# Custom settings
+#function _prompt_command() {
+    #PS1='\[\e[1;34m\]\w\e[m$(__git_ps1)\n\$\[\e[0m\] '
+#}
+#PROMPT_COMMAND=_prompt_command
 
-function _git_prompt() {
-    local git_status="`git status -unormal 2>&1`"
-    if ! [[ "$git_status" =~ Not\ a\ git\ repo ]]; then
-        if [[ "$git_status" =~ nothing\ to\ commit ]]; then
-            local ansi=42
-        elif [[ "$git_status" =~ nothing\ added\ to\ commit\ but\ untracked\ files\ present ]]; then
-            local ansi=43
-        else
-            local ansi=45
-        fi
-        if [[ "$git_status" =~ On\ branch\ ([^[:space:]]+) ]]; then
-            branch=${BASH_REMATCH[1]}
-            test "$branch" != master || branch=' '
-        else
-            # Detached HEAD.  (branch=HEAD is a faster alternative.)
-            branch="(`git describe --all --contains --abbrev=4 HEAD 2> /dev/null ||
-                echo HEAD`)"
-        fi
-        echo -n '\[\e[0;37;'"$ansi"';1m\]'"$branch"'\[\e[0m\] '
-    fi
-}
-function _prompt_command() {
-    PS1="`_git_prompt`"' \[\e[1;34m\]\w\n \$\[\e[0m\] '
-}
-PROMPT_COMMAND=_prompt_command
+# Color codes need to be wrappend around \[ and \] to avoid line wrapping
+# issues. See: http://askubuntu.com/a/24422
+PROMPT_COMMAND='__git_ps1 "\[\e[1;34m\]\w\[\e[0m\]" "\[\e[1;34m\]\\\$\[\e[0m\] "'
 
 
-
+# Bookmarking function (from Fritz)
 export MARKPATH=$HOME/.marks
 function jump {
     cd -P "$MARKPATH/$1" 2>/dev/null || echo "No such mark: $1"
