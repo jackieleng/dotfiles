@@ -30,7 +30,6 @@ Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'jackieleng/sexy_scroller.vim'  " fork of joeytwiddle's repo
 "Plugin 'simnalamburt/vim-mundo'  " fork of Gundo with neovim support
 "Plugin 'kshenoy/vim-signature'
-Plugin 'scrooloose/nerdcommenter'
 
 " Tagbar needs ctags (sudo apt-get install exuberant-ctags)
 Plugin 'majutsushi/tagbar'
