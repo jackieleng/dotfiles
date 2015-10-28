@@ -283,7 +283,8 @@ let g:airline_left_sep = ""
 let g:airline_right_sep = ""
 let g:airline_symbols.linenr = ""
 let g:airline_symbols.paste = "∥"
-let g:airline_symbols.branch = "⎇ "  " note the extra space
+" let g:airline_symbols.branch = "⎇ "  " note the extra space
+let g:airline_symbols.branch = ""  " note the extra space
 let g:airline_symbols.space = " "
 let g:airline_symbols.whitespace = "Ξ"
 let g:airline_symbols.modified = '+'
@@ -303,6 +304,9 @@ let g:airline_mode_map = {
   \ 'S'  : 'S',
   \ '' : 'S',
   \ }
+
+" Let's just disable it, mode names are shown always anyway.
+let g:airline_section_a = ""
 
 " Make linenr, column a bit tidier
 let g:airline_section_z = '%3p%% ' . g:airline_symbols.linenr . ' %l,%c'
