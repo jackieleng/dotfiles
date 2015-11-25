@@ -84,16 +84,14 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-
-# Other handy aliases
+# some more ls aliases
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
-alias drma='docker rm $(docker ps -qa)'  # rm all docker containers (fails if there are no containers)
 
+# Add an "alert" alias for long running commands.  Use like so:
+#   sleep 10; alert
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -159,6 +157,7 @@ alias vssh='vagrant ssh'
 alias vhalt='vagrant halt'
 alias vupssh='vagrant up && vagrant ssh'
 alias vglob='vagrant global-status'
+alias drma='docker rm $(docker ps -qa)'  # rm all docker containers (fails if there are no containers)
 
 # Fortran compiler stuff
 COMPVARSFILE="/opt/intel/composer_xe_2015.1.133/bin/compilervars.sh"
