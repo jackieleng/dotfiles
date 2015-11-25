@@ -363,5 +363,6 @@ map g# <Plug>(incsearch-nohl-g#)
 nmap <F8> :TagbarToggle<CR>
 
 " Jedi-vim
-let g:jedi#show_call_signatures = 0  " disable arg pop-up
+let g:jedi#show_call_signatures = 0  " disable function arg pop-up
 let g:jedi#popup_on_dot = 0  " disable automatic completion on dot (use <C-Space>)
+let g:jedi#smart_auto_mappings = 0  " disable auto-completion when typing `from module.name<space>`
