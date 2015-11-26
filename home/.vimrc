@@ -315,7 +315,7 @@ let g:airline_section_z = '%3p%% ' . g:airline_symbols.linenr . ' %l,%c'
 " autocmd VimEnter * NERDTree | wincmd p
 
 " Toggle NERDTree with Ctrl-N
-nmap <silent> <Leader>n :NERDTreeToggle<CR>
+nmap <silent> <Leader>t :NERDTreeToggle<CR>
 
 " NERDTree ignores:
 let NERDTreeIgnore = ['\.pyc$', '\.pyo$', '\.o$', '\.lo$', '\.mod$']
