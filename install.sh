@@ -26,13 +26,33 @@ for file in $FILES2; do
 
     # Neovim specific symlink
     if [ "$file" == .vimrc ]; then
-        if [ -h ~/.nvimrc ]; then
-            rm ~/.nvimrc
-            echo "Removed    ~/.nvimrc"
+        # Symlink/create dirs
+        XDG_CONFIG_HOME=~/.config
+        VIMDIR=~/.vim
+        NVIMDIR="$XDG_CONFIG_HOME/nvim"
+        if ! [[ -d "$VIMDIR" && ! -L "$VIMDIR" ]]; then  # dir + symlink dir check
+            echo "$VIMDIR doesn't exist yet, creating..."
+            mkdir $VIMDIR
+        fi
+
+        if ! [[ -d "$XDG_CONFIG_HOME" ]]; then
+            echo "$XDG_CONFIG_HOME doesn't exist yet, creating..."
+            mkdir -p $XDG_CONFIG_HOME
+        fi
+
+        if [ ! -L "$NVIMDIR" ]; then
+            echo "Symlinking dir $VIMDIR to $NVIMDIR"
+            ln -s $VIMDIR $NVIMDIR
+        fi
+
+        # Symlink init.vim
+        if [ -h "$NVIMDIR/init.vim" ]; then
+            rm "$NVIMDIR/init.vim"
+            echo "Removed    $NVIMDIR/init.vim"
         fi
         echo "** Creating additional Neovim symlink"
-        ln -s $PWD/$file ~/.nvimrc
-        echo "Symlinked  $PWD/$file to ~/.nvimrc"
+        ln -s $PWD/$file $NVIMDIR/init.vim
+        echo "Symlinked  $PWD/$file to $NVIMDIR/init.vim"
     fi
 done
 
@@ -68,19 +88,6 @@ fi
 if [ ! -e ~/.git-prompt.sh ]; then
     echo "~/.git-prompt.sh not found; downloading..."
     curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh -o ~/.git-prompt.sh
-fi
-
-# More Neovim symlinking
-VIMDIR=~/.vim
-NVIMDIR=~/.nvim
-if ! [[ -d "$VIMDIR" && ! -L "$VIMDIR" ]]; then  # dir + symlink dir check
-    echo "$VIMDIR doesn't exist yet, creating..."
-    mkdir $VIMDIR
-fi
-
-if [ ! -L "$NVIMDIR" ]; then
-    echo "Symlinking dir $VIMDIR to $NVIMDIR"
-    ln -s $VIMDIR $NVIMDIR
 fi
 
 echo "Done!"
