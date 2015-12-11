@@ -182,6 +182,12 @@ alias nvimb="base16 && nvim"
 export VISUAL=nvim
 export EDITOR="$VISUAL"
 
+# Git completions
+if [ -f ~/.git-completion.bash ]; then
+    source ~/.git-completion.bash
+fi
+
+
 # NOTE: need to set font of Terminal tab (Ubuntu Mono 12) and Vim tab (Dejavu Sans 10)
 # to roughly the same size as a workaround for a bug with the Vim tab that doesn't
 # redraw/refresh immediatly when switching tabs.
