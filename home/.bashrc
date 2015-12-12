@@ -126,9 +126,23 @@ GIT_PS1_SHOWCOLORHINTS=1
 #}
 #PROMPT_COMMAND=_prompt_command
 
+# Get Virtual Env
+function venv {
+    if [[ $VIRTUAL_ENV != "" ]]
+        then
+          # Strip out the path and just leave the env name
+          venv=" (${VIRTUAL_ENV##*/})"
+    else
+          # In case you don't have one activated
+          venv=''
+    fi
+    echo $venv
+}
+
 # Color codes need to be wrappend around \[ and \] to avoid line wrapping
 # issues. See: http://askubuntu.com/a/24422
-PROMPT_COMMAND='__git_ps1 "\[\e[1;34m\]\w\[\e[0m\]" "\[\e[1;34m\]\\\$\[\e[0m\] "'
+# TODO: why are there three slashes in prompt char, i.e.: \\\$? One should be enough.
+PROMPT_COMMAND='__git_ps1 "\[\e[1;34m\]$(venv)\w\[\e[0m\]" "\[\e[1;34m\]\\\$\[\e[0m\] "'
 
 
 # Bookmarking function (from Fritz)
