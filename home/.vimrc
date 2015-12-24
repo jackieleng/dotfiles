@@ -35,6 +35,7 @@ Plugin 'jackieleng/sexy_scroller.vim'  " fork of joeytwiddle's repo
 Plugin 'majutsushi/tagbar'
 
 Plugin 'haya14busa/incsearch.vim'
+Plugin 'pangloss/vim-javascript'
 
 " Color schemes
 Plugin 'altercation/vim-colors-solarized'
