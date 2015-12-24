@@ -172,6 +172,7 @@ alias vhalt='vagrant halt'
 alias vupssh='vagrant up && vagrant ssh'
 alias vglob='vagrant global-status'
 alias drma='docker rm $(docker ps -qa)'  # rm all docker containers (fails if there are no containers)
+alias v='nvim'
 
 # Fortran compiler stuff
 COMPVARSFILE="/opt/intel/composer_xe_2015.1.133/bin/compilervars.sh"
