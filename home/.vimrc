@@ -93,12 +93,12 @@ if !has('nvim')
     set term=screen-256color
 
     " Handle tmux $TERM quirks in vim. (ampersand means the option 'term')
-    if &term =~ '^screen-256color'
-        map <Esc>OH <Home>
-        map! <Esc>OH <Home>
-        map <Esc>OF <End>
-        map! <Esc>OF <End>
-    endif
+    " if &term =~ '^screen-256color'
+    "     map <Esc>OH <Home>
+    "     map! <Esc>OH <Home>
+    "     map <Esc>OF <End>
+    "     map! <Esc>OF <End>
+    " endif
 endif
 
 " Different colors between GUI and terminal
