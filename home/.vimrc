@@ -93,12 +93,12 @@ if !has('nvim')
     set term=screen-256color
 
     " Handle tmux $TERM quirks in vim. (ampersand means the option 'term')
-    if &term =~ '^screen-256color'
-        map <Esc>OH <Home>
-        map! <Esc>OH <Home>
-        map <Esc>OF <End>
-        map! <Esc>OF <End>
-    endif
+    " if &term =~ '^screen-256color'
+    "     map <Esc>OH <Home>
+    "     map! <Esc>OH <Home>
+    "     map <Esc>OF <End>
+    "     map! <Esc>OF <End>
+    " endif
 endif
 
 " Different colors between GUI and terminal
@@ -316,7 +316,7 @@ let g:airline_section_z = '%3p%% ' . g:airline_symbols.linenr . ' %l,%c'
 " autocmd VimEnter * NERDTree | wincmd p
 
 " Toggle NERDTree with Ctrl-N
-nmap <silent> <Leader>t :NERDTreeToggle<CR>
+nmap <silent> <c-n> :NERDTreeToggle<CR>
 
 " NERDTree ignores:
 let NERDTreeIgnore = ['\.pyc$', '\.pyo$', '\.o$', '\.lo$', '\.mod$']
