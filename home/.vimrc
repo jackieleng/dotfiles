@@ -72,7 +72,7 @@ set noswapfile
 set autoread          " Automatically reload file when changed
 set hidden            " Hide buffers instead of closing them
 set t_Co=256          " 256 colors in terminal
-" set number            " line numbers
+set number            " line numbers
 set nowrap            " don't wrap lines
 set showcmd           " show commands
 set showmatch         " set show matching parenthesis
