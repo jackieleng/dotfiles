@@ -14,7 +14,8 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 " My plugins
-Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'scrooloose/nerdtree'
 Plugin 'hdima/python-syntax'
 Plugin 'airblade/vim-gitgutter'
@@ -114,7 +115,7 @@ else
     " Solarized
     let g:solarized_termcolors=16
     syntax enable
-    set background=light
+    set background=dark
     colorscheme solarized
     " This is needed for solarized because the sign column is hard to read with
     " gitgutter:
