@@ -11,10 +11,11 @@ call vundle#begin()
 "call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
+Plugin 'VundleVim/Vundle.vim'
 
 " My plugins
-Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'scrooloose/nerdtree'
 Plugin 'hdima/python-syntax'
 Plugin 'airblade/vim-gitgutter'
@@ -27,7 +28,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'junegunn/goyo.vim'
 Plugin 'davidhalter/jedi-vim'  " need to do: 'pip install neovim' or compile with python extensions
 Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'jackieleng/sexy_scroller.vim'  " fork of joeytwiddle's repo
+"Plugin 'jackieleng/sexy_scroller.vim'  " fork of joeytwiddle's repo
 "Plugin 'simnalamburt/vim-mundo'  " fork of Gundo with neovim support
 "Plugin 'kshenoy/vim-signature'
 
@@ -216,30 +217,30 @@ nnoremap <Leader>bn :bnext<CR>
   "au BufEnter * if exists('b:winview') && !&diff | call winrestview(b:winview) | unlet! b:winview | endif
 "endif
 
-let g:SexyScroller_AutocmdsEnabled = 0
-
-if g:SexyScroller_AutocmdsEnabled == 0
-    " Note: pretty crappy workaround because of double call, but it works...
-    nnoremap <silent> <C-U> :call g:SexyScroller_ScrollToCursor(0)<CR><C-U>:call g:SexyScroller_ScrollToCursor(1)<CR>
-    nnoremap <silent> <C-D> :call g:SexyScroller_ScrollToCursor(0)<CR><C-D>:call g:SexyScroller_ScrollToCursor(1)<CR>
-    nnoremap <silent> <C-F> :call g:SexyScroller_ScrollToCursor(0)<CR><C-F>:call g:SexyScroller_ScrollToCursor(1)<CR>
-    nnoremap <silent> <C-B> :call g:SexyScroller_ScrollToCursor(0)<CR><C-B>:call g:SexyScroller_ScrollToCursor(1)<CR>
-    nnoremap <silent> <PageUp> :call g:SexyScroller_ScrollToCursor(0)<CR><PageUp>:call g:SexyScroller_ScrollToCursor(1)<CR>
-    nnoremap <silent> <PageDown> :call g:SexyScroller_ScrollToCursor(0)<CR><PageDown>:call g:SexyScroller_ScrollToCursor(1)<CR>
-
-    augroup Custom_Smooth_Scroller
-      autocmd!
-      autocmd WinEnter * call g:SexyScroller_ScrollToCursor(0)
-      "autocmd BufWinEnter * call SexyScroller_ScrollToCursor(0)
-      "autocmd BufWinEnter * call SexyScroller_ScrollToCursor(0) | echo "bufwinenter"
-      "autocmd BufWinLeave * call SexyScroller_ScrollToCursor(0)
-      "autocmd BufReadPost * call SexyScroller_ScrollToCursor(0)
-      " autocmd BufEnter * call SexyScroller_ScrollToCursor(1)
-      "autocmd BufWinLeave * call SexyScroller_ScrollToCursor(0)
-      "autocmd BufWinEnter * call SexyScroller_ScrollToCursor(0)
-      "autocmd InsertLeave * call SexyScroller_ScrollToCursor(0)
-    augroup END
-endif
+"let g:SexyScroller_AutocmdsEnabled = 0
+"
+"if g:SexyScroller_AutocmdsEnabled == 0
+"    " Note: pretty crappy workaround because of double call, but it works...
+"    nnoremap <silent> <C-U> :call g:SexyScroller_ScrollToCursor(0)<CR><C-U>:call g:SexyScroller_ScrollToCursor(1)<CR>
+"    nnoremap <silent> <C-D> :call g:SexyScroller_ScrollToCursor(0)<CR><C-D>:call g:SexyScroller_ScrollToCursor(1)<CR>
+"    nnoremap <silent> <C-F> :call g:SexyScroller_ScrollToCursor(0)<CR><C-F>:call g:SexyScroller_ScrollToCursor(1)<CR>
+"    nnoremap <silent> <C-B> :call g:SexyScroller_ScrollToCursor(0)<CR><C-B>:call g:SexyScroller_ScrollToCursor(1)<CR>
+"    nnoremap <silent> <PageUp> :call g:SexyScroller_ScrollToCursor(0)<CR><PageUp>:call g:SexyScroller_ScrollToCursor(1)<CR>
+"    nnoremap <silent> <PageDown> :call g:SexyScroller_ScrollToCursor(0)<CR><PageDown>:call g:SexyScroller_ScrollToCursor(1)<CR>
+"
+"    augroup Custom_Smooth_Scroller
+"      autocmd!
+"      autocmd WinEnter * call g:SexyScroller_ScrollToCursor(0)
+"      "autocmd BufWinEnter * call SexyScroller_ScrollToCursor(0)
+"      "autocmd BufWinEnter * call SexyScroller_ScrollToCursor(0) | echo "bufwinenter"
+"      "autocmd BufWinLeave * call SexyScroller_ScrollToCursor(0)
+"      "autocmd BufReadPost * call SexyScroller_ScrollToCursor(0)
+"      " autocmd BufEnter * call SexyScroller_ScrollToCursor(1)
+"      "autocmd BufWinLeave * call SexyScroller_ScrollToCursor(0)
+"      "autocmd BufWinEnter * call SexyScroller_ScrollToCursor(0)
+"      "autocmd InsertLeave * call SexyScroller_ScrollToCursor(0)
+"    augroup END
+"endif
 " Sexy Scroller mouse workarounds
 " let g:SexyScroller_MinLines = 15
 
