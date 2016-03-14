@@ -103,25 +103,26 @@ if !has('nvim')
 endif
 
 " Different colors between GUI and terminal
-if has("gui_running")
-    " For base16 colors in terminal
-    let base16colorspace=256
+"if has("gui_running")
+"    " For base16 colors in terminal
+"    let base16colorspace=256
+"
+"    " Color scheme (do `:source ~/.vimrc` when switching)
+"    syntax enable
+"    colorscheme base16-ocean
+"    set background=dark
+"else
+"endif
 
-    " Color scheme (do `:source ~/.vimrc` when switching)
-    syntax enable
-    colorscheme base16-ocean
-    set background=dark
-else
-    " Solarized
-    let g:solarized_termcolors=16
-    syntax enable
-    set background=light
-    colorscheme solarized
-    " This is needed for solarized because the sign column is hard to read with
-    " gitgutter:
-    " highlight clear SignColumn
-    call togglebg#map("<F6>")
-endif
+" Solarized
+let g:solarized_termcolors=16
+syntax enable
+set background=light
+colorscheme solarized
+" This is needed for solarized because the sign column is hard to read with
+" gitgutter:
+" highlight clear SignColumn
+call togglebg#map("<F6>")
 
 " Search highlight color (hi = highlight)
 " hi Search guibg=LightGreen
