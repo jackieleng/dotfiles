@@ -26,7 +26,7 @@ Plugin 'moll/vim-bbye'
 Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-fugitive'
 Plugin 'junegunn/goyo.vim'
-Plugin 'davidhalter/jedi-vim'  " need to do: 'pip install neovim' or compile with python extensions
+Plugin 'davidhalter/jedi-vim'  " To make this work with neovim you need to install the neovim python package (i.e.: pip install neovim) or compile neovim with python extensions
 Plugin 'christoomey/vim-tmux-navigator'
 "Plugin 'jackieleng/sexy_scroller.vim'  " fork of joeytwiddle's repo
 "Plugin 'simnalamburt/vim-mundo'  " fork of Gundo with neovim support
