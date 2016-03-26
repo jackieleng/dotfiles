@@ -11,7 +11,7 @@ call vundle#begin()
 "call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
+Plugin 'VundleVim/Vundle.vim'
 
 " My plugins
 Plugin 'vim-airline/vim-airline'
@@ -26,9 +26,9 @@ Plugin 'moll/vim-bbye'
 Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-fugitive'
 Plugin 'junegunn/goyo.vim'
-Plugin 'davidhalter/jedi-vim'  " need to do: 'pip install neovim' or compile with python extensions
+Plugin 'davidhalter/jedi-vim'  " To make this work with neovim you need to install the neovim python package (i.e.: pip install neovim) or compile neovim with python extensions
 Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'jackieleng/sexy_scroller.vim'  " fork of joeytwiddle's repo
+"Plugin 'jackieleng/sexy_scroller.vim'  " fork of joeytwiddle's repo
 "Plugin 'simnalamburt/vim-mundo'  " fork of Gundo with neovim support
 "Plugin 'kshenoy/vim-signature'
 
@@ -103,25 +103,26 @@ if !has('nvim')
 endif
 
 " Different colors between GUI and terminal
-if has("gui_running")
-    " For base16 colors in terminal
-    let base16colorspace=256
+"if has("gui_running")
+"    " For base16 colors in terminal
+"    let base16colorspace=256
+"
+"    " Color scheme (do `:source ~/.vimrc` when switching)
+"    syntax enable
+"    colorscheme base16-ocean
+"    set background=dark
+"else
+"endif
 
-    " Color scheme (do `:source ~/.vimrc` when switching)
-    syntax enable
-    colorscheme base16-ocean
-    set background=dark
-else
-    " Solarized
-    let g:solarized_termcolors=16
-    syntax enable
-    set background=dark
-    colorscheme solarized
-    " This is needed for solarized because the sign column is hard to read with
-    " gitgutter:
-    " highlight clear SignColumn
-    call togglebg#map("<F6>")
-endif
+" Solarized
+let g:solarized_termcolors=16
+syntax enable
+set background=dark
+colorscheme solarized
+" This is needed for solarized because the sign column is hard to read with
+" gitgutter:
+" highlight clear SignColumn
+call togglebg#map("<F6>")
 
 " Search highlight color (hi = highlight)
 " hi Search guibg=LightGreen
@@ -168,6 +169,9 @@ augroup END
 " ------------
 " Key mappings
 " ------------
+
+" Make Ctrl-C act as Escape
+ino <C-C> <Esc>
 
 " Leader key
 let mapleader = ","
@@ -217,30 +221,30 @@ nnoremap <Leader>bn :bnext<CR>
   "au BufEnter * if exists('b:winview') && !&diff | call winrestview(b:winview) | unlet! b:winview | endif
 "endif
 
-let g:SexyScroller_AutocmdsEnabled = 0
-
-if g:SexyScroller_AutocmdsEnabled == 0
-    " Note: pretty crappy workaround because of double call, but it works...
-    nnoremap <silent> <C-U> :call g:SexyScroller_ScrollToCursor(0)<CR><C-U>:call g:SexyScroller_ScrollToCursor(1)<CR>
-    nnoremap <silent> <C-D> :call g:SexyScroller_ScrollToCursor(0)<CR><C-D>:call g:SexyScroller_ScrollToCursor(1)<CR>
-    nnoremap <silent> <C-F> :call g:SexyScroller_ScrollToCursor(0)<CR><C-F>:call g:SexyScroller_ScrollToCursor(1)<CR>
-    nnoremap <silent> <C-B> :call g:SexyScroller_ScrollToCursor(0)<CR><C-B>:call g:SexyScroller_ScrollToCursor(1)<CR>
-    nnoremap <silent> <PageUp> :call g:SexyScroller_ScrollToCursor(0)<CR><PageUp>:call g:SexyScroller_ScrollToCursor(1)<CR>
-    nnoremap <silent> <PageDown> :call g:SexyScroller_ScrollToCursor(0)<CR><PageDown>:call g:SexyScroller_ScrollToCursor(1)<CR>
-
-    augroup Custom_Smooth_Scroller
-      autocmd!
-      autocmd WinEnter * call g:SexyScroller_ScrollToCursor(0)
-      "autocmd BufWinEnter * call SexyScroller_ScrollToCursor(0)
-      "autocmd BufWinEnter * call SexyScroller_ScrollToCursor(0) | echo "bufwinenter"
-      "autocmd BufWinLeave * call SexyScroller_ScrollToCursor(0)
-      "autocmd BufReadPost * call SexyScroller_ScrollToCursor(0)
-      " autocmd BufEnter * call SexyScroller_ScrollToCursor(1)
-      "autocmd BufWinLeave * call SexyScroller_ScrollToCursor(0)
-      "autocmd BufWinEnter * call SexyScroller_ScrollToCursor(0)
-      "autocmd InsertLeave * call SexyScroller_ScrollToCursor(0)
-    augroup END
-endif
+"let g:SexyScroller_AutocmdsEnabled = 0
+"
+"if g:SexyScroller_AutocmdsEnabled == 0
+"    " Note: pretty crappy workaround because of double call, but it works...
+"    nnoremap <silent> <C-U> :call g:SexyScroller_ScrollToCursor(0)<CR><C-U>:call g:SexyScroller_ScrollToCursor(1)<CR>
+"    nnoremap <silent> <C-D> :call g:SexyScroller_ScrollToCursor(0)<CR><C-D>:call g:SexyScroller_ScrollToCursor(1)<CR>
+"    nnoremap <silent> <C-F> :call g:SexyScroller_ScrollToCursor(0)<CR><C-F>:call g:SexyScroller_ScrollToCursor(1)<CR>
+"    nnoremap <silent> <C-B> :call g:SexyScroller_ScrollToCursor(0)<CR><C-B>:call g:SexyScroller_ScrollToCursor(1)<CR>
+"    nnoremap <silent> <PageUp> :call g:SexyScroller_ScrollToCursor(0)<CR><PageUp>:call g:SexyScroller_ScrollToCursor(1)<CR>
+"    nnoremap <silent> <PageDown> :call g:SexyScroller_ScrollToCursor(0)<CR><PageDown>:call g:SexyScroller_ScrollToCursor(1)<CR>
+"
+"    augroup Custom_Smooth_Scroller
+"      autocmd!
+"      autocmd WinEnter * call g:SexyScroller_ScrollToCursor(0)
+"      "autocmd BufWinEnter * call SexyScroller_ScrollToCursor(0)
+"      "autocmd BufWinEnter * call SexyScroller_ScrollToCursor(0) | echo "bufwinenter"
+"      "autocmd BufWinLeave * call SexyScroller_ScrollToCursor(0)
+"      "autocmd BufReadPost * call SexyScroller_ScrollToCursor(0)
+"      " autocmd BufEnter * call SexyScroller_ScrollToCursor(1)
+"      "autocmd BufWinLeave * call SexyScroller_ScrollToCursor(0)
+"      "autocmd BufWinEnter * call SexyScroller_ScrollToCursor(0)
+"      "autocmd InsertLeave * call SexyScroller_ScrollToCursor(0)
+"    augroup END
+"endif
 " Sexy Scroller mouse workarounds
 " let g:SexyScroller_MinLines = 15
 
