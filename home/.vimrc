@@ -117,7 +117,7 @@ endif
 " Solarized
 let g:solarized_termcolors=16
 syntax enable
-set background=light
+set background=dark
 colorscheme solarized
 " This is needed for solarized because the sign column is hard to read with
 " gitgutter:
