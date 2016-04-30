@@ -145,7 +145,7 @@ function venv {
 PROMPT_COMMAND='__git_ps1 "\[\e[1;34m\]$(venv)\w\[\e[0m\]" "\[\e[1;34m\]\\\$\[\e[0m\] "'
 
 
-# Bookmarking function (from Fritz)
+# Bookmarking (see: http://jeroenjanssens.com/2013/08/16/quickly-navigate-your-filesystem-from-the-command-line.html)
 export MARKPATH=$HOME/.marks
 function jump {
     cd -P "$MARKPATH/$1" 2>/dev/null || echo "No such mark: $1"
@@ -160,6 +160,14 @@ function marks {
     ls -l "$MARKPATH" | sed 's/  / /g' | cut -d' ' -f9- | sed 's/ -/\t-/g' && echo
 }
 
+_completemarks() {
+  local curw=${COMP_WORDS[COMP_CWORD]}
+  local wordlist=$(find $MARKPATH -type l -printf "%f\n")
+  COMPREPLY=($(compgen -W '${wordlist[@]}' -- "$curw"))
+  return 0
+}
+
+complete -F _completemarks jump unmark
 
 # Shortcuts
 alias ..='cd ..'
