@@ -26,11 +26,12 @@ Plugin 'moll/vim-bbye'
 Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-fugitive'
 Plugin 'junegunn/goyo.vim'
-Plugin 'davidhalter/jedi-vim'  " To make this work with neovim you need to install the neovim python package (i.e.: pip install neovim) or compile neovim with python extensions
+" Plugin 'davidhalter/jedi-vim'  " To make this work with neovim you need to install the neovim python package (i.e.: pip install neovim) or compile neovim with python extensions
 Plugin 'christoomey/vim-tmux-navigator'
 "Plugin 'jackieleng/sexy_scroller.vim'  " fork of joeytwiddle's repo
 "Plugin 'simnalamburt/vim-mundo'  " fork of Gundo with neovim support
 "Plugin 'kshenoy/vim-signature'
+Plugin 'Valloric/YouCompleteMe'
 
 " Tagbar needs ctags (sudo apt-get install exuberant-ctags)
 Plugin 'majutsushi/tagbar'
@@ -369,6 +370,9 @@ map g# <Plug>(incsearch-nohl-g#)
 nmap <F8> :TagbarToggle<CR>
 
 " Jedi-vim
-let g:jedi#show_call_signatures = 0  " disable function arg pop-up
-let g:jedi#popup_on_dot = 0  " disable automatic completion on dot (use <C-Space>)
-let g:jedi#smart_auto_mappings = 0  " disable auto-completion when typing `from module.name<space>`
+" let g:jedi#show_call_signatures = 0  " disable function arg pop-up
+" let g:jedi#popup_on_dot = 0  " disable automatic completion on dot (use <C-Space>)
+" let g:jedi#smart_auto_mappings = 0  " disable auto-completion when typing `from module.name<space>`
+
+" YCM
+let g:ycm_autoclose_preview_window_after_insertion = 1
