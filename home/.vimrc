@@ -21,7 +21,7 @@ Plugin 'hdima/python-syntax'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'xolox/vim-session'
 Plugin 'xolox/vim-misc'    " Needed by vim-session
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'  " Fork of kien's unmaintained version
 Plugin 'moll/vim-bbye'
 Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-fugitive'
