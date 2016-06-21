@@ -179,7 +179,8 @@ alias vssh='vagrant ssh'
 alias vhalt='vagrant halt'
 alias vupssh='vagrant up && vagrant ssh'
 alias vglob='vagrant global-status'
-alias drma='docker rm $(docker ps -qa)'  # rm all docker containers (fails if there are no containers)
+alias drm='docker rm $(docker ps -qa)'  # rm all docker containers (fails if there are no containers)
+alias drmi='docker rmi $(docker images -f "dangling=true" -q)'  # rm all dangling (untagged) images
 alias v='nvim'
 
 # Fortran compiler stuff
