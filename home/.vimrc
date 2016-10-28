@@ -171,9 +171,6 @@ augroup END
 " Key mappings
 " ------------
 
-" Make Ctrl-C act as Escape
-ino <C-C> <Esc>
-
 " Leader key
 let mapleader = ","
 
