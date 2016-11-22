@@ -373,3 +373,9 @@ nmap <F8> :TagbarToggle<CR>
 
 " YCM
 let g:ycm_autoclose_preview_window_after_insertion = 1
+
+" Speed up CtrlP
+let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
+if executable('ag')
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+endif
