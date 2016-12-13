@@ -140,10 +140,15 @@ if has("gui_running")
     set guioptions-=L  "remove left-hand scroll bar
 endif
 
-set tabstop=8     " Linux kernel code default, also tabs are replaced by 8 spaces by Python
+set tabstop=4     " spaces per tab
 set softtabstop=4 " number of columns when hitting tab in insert mode
 set expandtab     " expand tab to spaces
 set shiftwidth=4  " number of spaces to use for autoindenting
+
+au FileType python setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab
+au FileType javascript setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+au FileType html setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+au FileType css setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 
 set autoindent    " always set autoindenting on
 set copyindent    " copy the previous indentation on autoindenting
