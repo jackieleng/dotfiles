@@ -32,10 +32,7 @@ Plugin 'christoomey/vim-tmux-navigator'
 "Plugin 'simnalamburt/vim-mundo'  " fork of Gundo with neovim support
 "Plugin 'kshenoy/vim-signature'
 Plugin 'Valloric/YouCompleteMe'
-
-" Tagbar needs ctags (sudo apt-get install exuberant-ctags)
-Plugin 'majutsushi/tagbar'
-
+" Plugin 'majutsushi/tagbar'   " Tagbar needs ctags (sudo apt-get install exuberant-ctags)
 Plugin 'haya14busa/incsearch.vim'
 Plugin 'pangloss/vim-javascript'
 
