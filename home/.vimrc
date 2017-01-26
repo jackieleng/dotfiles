@@ -32,7 +32,7 @@ Plugin 'christoomey/vim-tmux-navigator'
 "Plugin 'simnalamburt/vim-mundo'  " fork of Gundo with neovim support
 "Plugin 'kshenoy/vim-signature'
 Plugin 'Valloric/YouCompleteMe'
-" Plugin 'majutsushi/tagbar'   " Tagbar needs ctags (sudo apt-get install exuberant-ctags)
+Plugin 'majutsushi/tagbar'   " Tagbar needs ctags (sudo apt-get install exuberant-ctags)
 Plugin 'haya14busa/incsearch.vim'
 Plugin 'pangloss/vim-javascript'
 
@@ -86,6 +86,7 @@ silent! set winminwidth=45    " The minimal width
 let &showbreak='↪ '
 set scrolloff=1       " lines visible below or above cursor
 set shell=/bin/bash   " syntastic needs bash (and not e.g. fish)
+set wildmode=longest:list  " tab completion similar to Bash (as far as possible without ambiguity)
 
 if !has('nvim')
     " For tmux
