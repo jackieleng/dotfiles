@@ -342,8 +342,10 @@ set sessionoptions-=help
 " Don't persist options and mappings because it can corrupt sessions.
 set sessionoptions-=options
 
-" Let Syntastic check on file open
+" Let Syntastic check on file open/save
 let g:syntastic_check_on_open = 1
+" Don't check on :wq-like commands
+let g:syntastic_check_on_wq = 0
 
 " Custom vim-tmux-navigator settings
 let g:tmux_navigator_no_mappings = 1
