@@ -1,0 +1,16 @@
+[user]
+	email = Jackie.Leng@nelen-schuurmans.nl
+	name = Jackie Leng
+[push]
+	default = simple
+[credential]
+	helper = cache --timeout=18000
+[alias]
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	ls = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
+	co = checkout
+	cob = checkout -b
+	ci = commit
+	st = status
+	br = branch
+	unstage = reset HEAD --

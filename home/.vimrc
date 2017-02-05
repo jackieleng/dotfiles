@@ -32,7 +32,7 @@ Plugin 'christoomey/vim-tmux-navigator'
 "Plugin 'simnalamburt/vim-mundo'  " fork of Gundo with neovim support
 "Plugin 'kshenoy/vim-signature'
 Plugin 'Valloric/YouCompleteMe'
-" Plugin 'majutsushi/tagbar'   " Tagbar needs ctags (sudo apt-get install exuberant-ctags)
+Plugin 'majutsushi/tagbar'   " Tagbar needs ctags (sudo apt-get install exuberant-ctags)
 Plugin 'haya14busa/incsearch.vim'
 Plugin 'pangloss/vim-javascript'
 
@@ -86,6 +86,7 @@ silent! set winminwidth=45    " The minimal width
 let &showbreak='↪ '
 set scrolloff=1       " lines visible below or above cursor
 set shell=/bin/bash   " syntastic needs bash (and not e.g. fish)
+set wildmode=longest:list  " tab completion similar to Bash (as far as possible without ambiguity)
 
 if !has('nvim')
     " For tmux
@@ -208,7 +209,7 @@ nnoremap <Leader>tc :tabnew<CR>
 "nnoremap <Leader>tn :tabnext<CR>
 
 " Easier buffer switching
-nnoremap <F5> :buffers<CR>:buffer<Space>
+nnoremap <Leader>l :buffers<CR>:buffer<Space>
 nnoremap <Leader>bp :bprevious<CR>
 nnoremap <Leader>bn :bnext<CR>
 
@@ -341,8 +342,10 @@ set sessionoptions-=help
 " Don't persist options and mappings because it can corrupt sessions.
 set sessionoptions-=options
 
-" Let Syntastic check on file open
+" Let Syntastic check on file open/save
 let g:syntastic_check_on_open = 1
+" Don't check on :wq-like commands
+let g:syntastic_check_on_wq = 0
 
 " Custom vim-tmux-navigator settings
 let g:tmux_navigator_no_mappings = 1
