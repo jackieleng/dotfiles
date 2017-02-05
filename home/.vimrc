@@ -209,7 +209,7 @@ nnoremap <Leader>tc :tabnew<CR>
 "nnoremap <Leader>tn :tabnext<CR>
 
 " Easier buffer switching
-nnoremap <F5> :buffers<CR>:buffer<Space>
+nnoremap <Leader>l :buffers<CR>:buffer<Space>
 nnoremap <Leader>bp :bprevious<CR>
 nnoremap <Leader>bn :bnext<CR>
 
