@@ -35,6 +35,7 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'majutsushi/tagbar'   " Tagbar needs ctags (sudo apt-get install exuberant-ctags)
 Plugin 'haya14busa/incsearch.vim'
 Plugin 'pangloss/vim-javascript'
+Plugin 'vimwiki/vimwiki'
 
 " Color schemes
 Plugin 'altercation/vim-colors-solarized'
