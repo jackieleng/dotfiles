@@ -319,9 +319,6 @@ let g:airline_section_a = ""
 " Make linenr, column a bit tidier
 let g:airline_section_z = '%3p%% ' . g:airline_symbols.linenr . ' %l,%c'
 
-" Start NERDTree on startup (with cursor in main window) TODO for linux
-" autocmd VimEnter * NERDTree | wincmd p
-
 " Toggle NERDTree with Ctrl-N
 " nmap <silent> <c-n> :NERDTreeToggle<CR>
 
