@@ -250,7 +250,7 @@ nnoremap <Leader>bn :bnext<CR>
 " Sexy Scroller mouse workarounds
 " let g:SexyScroller_MinLines = 15
 
-
+let g:netrw_liststyle = 3
 
 
 " ---------------
