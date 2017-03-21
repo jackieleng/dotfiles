@@ -16,7 +16,6 @@ Plugin 'VundleVim/Vundle.vim'
 " My plugins
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-" Plugin 'scrooloose/nerdtree'  " just use NETRW ;)
 Plugin 'hdima/python-syntax'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'xolox/vim-session'
@@ -318,15 +317,6 @@ let g:airline_section_a = ""
 
 " Make linenr, column a bit tidier
 let g:airline_section_z = '%3p%% ' . g:airline_symbols.linenr . ' %l,%c'
-
-" Toggle NERDTree with Ctrl-N
-" nmap <silent> <c-n> :NERDTreeToggle<CR>
-
-" NERDTree ignores:
-" let NERDTreeIgnore = ['\.pyc$', '\.pyo$', '\.o$', '\.lo$', '\.mod$']
-
-" Show hidden files
-" let NERDTreeShowHidden = 1
 
 " Increase git gutter update rate
 set updatetime=750
