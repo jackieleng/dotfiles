@@ -16,7 +16,7 @@ Plugin 'VundleVim/Vundle.vim'
 " My plugins
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'scrooloose/nerdtree'
+" Plugin 'scrooloose/nerdtree'  " just use NETRW ;)
 Plugin 'hdima/python-syntax'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'xolox/vim-session'
@@ -33,7 +33,7 @@ Plugin 'christoomey/vim-tmux-navigator'
 "Plugin 'kshenoy/vim-signature'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'majutsushi/tagbar'   " Tagbar needs ctags (sudo apt-get install exuberant-ctags)
-Plugin 'haya14busa/incsearch.vim'
+" Plugin 'haya14busa/incsearch.vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'vimwiki/vimwiki'
 
@@ -210,7 +210,7 @@ nnoremap <Leader>tc :tabnew<CR>
 "nnoremap <Leader>tn :tabnext<CR>
 
 " Easier buffer switching
-nnoremap <Leader>l :buffers<CR>:buffer<Space>
+" nnoremap <Leader>l :buffers<CR>:buffer<Space>
 nnoremap <Leader>bp :bprevious<CR>
 nnoremap <Leader>bn :bnext<CR>
 
@@ -323,13 +323,13 @@ let g:airline_section_z = '%3p%% ' . g:airline_symbols.linenr . ' %l,%c'
 " autocmd VimEnter * NERDTree | wincmd p
 
 " Toggle NERDTree with Ctrl-N
-nmap <silent> <c-n> :NERDTreeToggle<CR>
+" nmap <silent> <c-n> :NERDTreeToggle<CR>
 
 " NERDTree ignores:
-let NERDTreeIgnore = ['\.pyc$', '\.pyo$', '\.o$', '\.lo$', '\.mod$']
+" let NERDTreeIgnore = ['\.pyc$', '\.pyo$', '\.o$', '\.lo$', '\.mod$']
 
 " Show hidden files
-let NERDTreeShowHidden = 1
+" let NERDTreeShowHidden = 1
 
 " Increase git gutter update rate
 set updatetime=750
@@ -357,17 +357,17 @@ nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
 " nnoremap <silent> {c-\} :TmuxNavigatePrevious<cr>  " don't need
 
 " Incsearch
-map /  <Plug>(incsearch-forward)
-map ?  <Plug>(incsearch-backward)
-map g/ <Plug>(incsearch-stay)
-" :h g:incsearch#auto_nohlsearch
-let g:incsearch#auto_nohlsearch = 0
-map n  <Plug>(incsearch-nohl-n)
-map N  <Plug>(incsearch-nohl-N)
-map *  <Plug>(incsearch-nohl-*)
-map #  <Plug>(incsearch-nohl-#)
-map g* <Plug>(incsearch-nohl-g*)
-map g# <Plug>(incsearch-nohl-g#)
+" map /  <Plug>(incsearch-forward)
+" map ?  <Plug>(incsearch-backward)
+" map g/ <Plug>(incsearch-stay)
+" " :h g:incsearch#auto_nohlsearch
+" let g:incsearch#auto_nohlsearch = 0
+" map n  <Plug>(incsearch-nohl-n)
+" map N  <Plug>(incsearch-nohl-N)
+" map *  <Plug>(incsearch-nohl-*)
+" map #  <Plug>(incsearch-nohl-#)
+" map g* <Plug>(incsearch-nohl-g*)
+" map g# <Plug>(incsearch-nohl-g#)
 
 " Tagbar
 nmap <F8> :TagbarToggle<CR>
@@ -385,3 +385,10 @@ let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
 if executable('ag')
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 endif
+
+" CtrlP mappings
+nnoremap <silent> <Leader>l :CtrlPBuffer<CR>
+
+" Vimwiki
+" Use Markdown wiki markup
+let g:vimwiki_list = [{'path': '~/vimwiki', 'syntax': 'markdown', 'ext': '.md'}]
