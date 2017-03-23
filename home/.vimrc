@@ -84,9 +84,11 @@ silent! set winwidth=85       " Automatic horizontal resizing
 silent! set winminwidth=45    " The minimal width
 " set winheight=50  " Automatic vertical resizing
 let &showbreak='↪ '
-set scrolloff=1       " lines visible below or above cursor
-set shell=/bin/bash   " syntastic needs bash (and not e.g. fish)
+set scrolloff=1            " lines visible below or above cursor
+set shell=/bin/bash        " syntastic needs bash (and not e.g. fish)
 set wildmode=longest:list  " tab completion similar to Bash (as far as possible without ambiguity)
+set inccommand=split       " live preview for substitute (Neovim option)
+let g:netrw_liststyle=3    " nicer Netrw style
 
 if !has('nvim')
     " For tmux
@@ -248,8 +250,6 @@ nnoremap <Leader>bn :bnext<CR>
 "endif
 " Sexy Scroller mouse workarounds
 " let g:SexyScroller_MinLines = 15
-
-let g:netrw_liststyle = 3
 
 
 " ---------------
