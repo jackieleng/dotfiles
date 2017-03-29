@@ -200,7 +200,7 @@ nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
 nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
 
 " FZF
-nnoremap <silent> <Leader>fzf :FZF<CR>
+nnoremap <silent> <Leader>f :FZF<CR>
 
 " Toggle line numbers
 nmap <F12> :set invnumber<CR>
@@ -379,3 +379,6 @@ nnoremap <silent> <Leader>l :CtrlPBuffer<CR>
 " Vimwiki
 " Use Markdown wiki markup
 let g:vimwiki_list = [{'path': '~/vimwiki', 'syntax': 'markdown', 'ext': '.md'}]
+
+" python-syntax
+let python_highlight_all=1
