@@ -277,6 +277,9 @@ let g:airline_powerline_fonts = 0
 " Disable syntastic integration
 let g:airline#extensions#syntastic#enabled = 0
 
+" Disable tagbar integration
+let g:airline#extensions#tagbar#enabled = 0
+
 " Nicer airline symbols
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
@@ -290,8 +293,8 @@ let g:airline_left_sep = ""
 let g:airline_right_sep = ""
 let g:airline_symbols.linenr = ""
 let g:airline_symbols.paste = "∥"
-" let g:airline_symbols.branch = "⎇ "  " note the extra space
-let g:airline_symbols.branch = ""  " note the extra space
+let g:airline_symbols.branch = "⎇ "  " note the extra space
+" let g:airline_symbols.branch = ""  " note the extra space
 let g:airline_symbols.space = " "
 let g:airline_symbols.whitespace = "Ξ"
 let g:airline_symbols.modified = '+'
