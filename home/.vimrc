@@ -22,7 +22,7 @@ Plugin 'xolox/vim-session'
 Plugin 'xolox/vim-misc'    " Needed by vim-session
 Plugin 'ctrlpvim/ctrlp.vim'  " Fork of kien's unmaintained version
 Plugin 'moll/vim-bbye'
-Plugin 'scrooloose/syntastic'
+"Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-fugitive'
 Plugin 'junegunn/goyo.vim'
 " Plugin 'davidhalter/jedi-vim'  " To make this work with neovim you need to install the neovim python package (i.e.: pip install neovim) or compile neovim with python extensions
@@ -31,6 +31,9 @@ Plugin 'christoomey/vim-tmux-navigator'
 "Plugin 'simnalamburt/vim-mundo'  " fork of Gundo with neovim support
 "Plugin 'kshenoy/vim-signature'
 Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Shougo/deoplete.nvim'
+"Plugin 'zchee/deoplete-jedi'
+Plugin 'w0rp/ale'
 Plugin 'majutsushi/tagbar'   " Tagbar needs ctags (sudo apt-get install exuberant-ctags)
 " Plugin 'haya14busa/incsearch.vim'
 Plugin 'pangloss/vim-javascript'
@@ -89,6 +92,7 @@ set shell=/bin/bash        " syntastic needs bash (and not e.g. fish)
 set wildmode=longest:list  " tab completion similar to Bash (as far as possible without ambiguity)
 set inccommand=split       " live preview for substitute (Neovim option)
 let g:netrw_liststyle=3    " nicer Netrw style
+set encoding=utf-8
 
 if !has('nvim')
     " For tmux
@@ -120,10 +124,7 @@ let g:solarized_termcolors=16
 syntax enable
 set background=light
 colorscheme solarized
-" This is needed for solarized because the sign column is hard to read with
-" gitgutter:
-" highlight clear SignColumn
-call togglebg#map("<F6>")
+call togglebg#map("<F5>")
 
 " Search highlight color (hi = highlight)
 " hi Search guibg=LightGreen
@@ -176,24 +177,17 @@ augroup END
 " Key mappings
 " ------------
 
-" Leader key
-let mapleader = ","
-
-" Press Space to turn off highlighting and clear any message already displayed
-nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
-
-" Map horizontal scrolling to CTRL-L/H (note that CTRL-L is graphic reload on default)
-" map <C-L> 3zl
-" map <C-H> 3zh
-" Map vertical scroll
-" map <C-K> <C-Y>
-" map <C-J> <C-E>
-
 " Easier window switching
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
+
+" Leader key
+let mapleader = " "
+
+" Turn off highlighting
+nnoremap <silent> <Leader>n :noh<CR>
 
 " Resizing with leader key
 nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
@@ -205,15 +199,13 @@ nnoremap <silent> <Leader>f :FZF<CR>
 " Toggle line numbers
 nmap <F12> :set invnumber<CR>
 
-" Easier tab movement
-nnoremap <Leader>tc :tabnew<CR>
-"nnoremap <Leader>tp :tabprev<CR>
-"nnoremap <Leader>tn :tabnext<CR>
-
 " Easier buffer switching
 " nnoremap <Leader>l :buffers<CR>:buffer<Space>
-nnoremap <Leader>bp :bprevious<CR>
-nnoremap <Leader>bn :bnext<CR>
+nnoremap <Leader>B :bprevious<CR>
+nnoremap <Leader>b :bnext<CR>
+
+" Buffer list
+nnoremap <silent> <Leader>l :CtrlPBuffer<CR>
 
 " nnoremap <silent> <MouseDown> <MouseDown>:call s:CheckForChange(1)<CR>
 " nnoremap <silent> <MouseUp> <MouseUp>:call s:CheckForChange(1)<CR>
@@ -259,26 +251,14 @@ nnoremap <Leader>bn :bnext<CR>
 " Let airline/statusline appear all the time
 set laststatus=2
 
-" Enable the list of buffers
-let g:airline#extensions#tabline#enabled = 1
+" Don't load all extensions, only those we want
+let g:airline_extensions = ['branch', 'tabline', 'ctrlp']
 
-" Show just the filename
+" Show just the filename instead of path
 let g:airline#extensions#tabline#fnamemod = ':t'
 
-" enable/disable detection of whitespace errors
-let g:airline#extensions#whitespace#enabled = 0
-
-" Disable gitgutter hunks in airline
-let g:airline#extensions#hunks#enabled = 0
-
-" Do not use powerline fonts for airline
-let g:airline_powerline_fonts = 0
-
-" Disable syntastic integration
-let g:airline#extensions#syntastic#enabled = 0
-
-" Disable tagbar integration
-let g:airline#extensions#tagbar#enabled = 0
+" Exclude airline from preview window (causes bugs with YCM)
+let g:airline_exclude_preview = 1
 
 " Nicer airline symbols
 if !exists('g:airline_symbols')
@@ -288,7 +268,6 @@ endif
 " airline custom symbols when not using powerline fonts
 " The unicode symbols will work if you do: sudo apt-get install ttf-ancient-fonts
 " This installs a Symbola font
-set encoding=utf-8
 let g:airline_left_sep = ""
 let g:airline_right_sep = ""
 let g:airline_symbols.linenr = ""
@@ -299,21 +278,6 @@ let g:airline_symbols.space = " "
 let g:airline_symbols.whitespace = "Ξ"
 let g:airline_symbols.modified = '+'
 let g:airline_symbols.readonly = "RO"
-
-" Custom mode names in g:airline_section_a
-let g:airline_mode_map = {
-  \ '__' : '-',
-  \ 'n'  : 'N',
-  \ 'i'  : 'I',
-  \ 'R'  : 'R',
-  \ 'c'  : 'C',
-  \ 'v'  : 'V',
-  \ 'V'  : 'V',
-  \ '' : 'V',
-  \ 's'  : 'S',
-  \ 'S'  : 'S',
-  \ '' : 'S',
-  \ }
 
 " Let's just disable it, mode names are shown always anyway.
 let g:airline_section_a = ""
@@ -367,6 +331,19 @@ nmap <F8> :TagbarToggle<CR>
 " let g:jedi#popup_on_dot = 0  " disable automatic completion on dot (use <C-Space>)
 " let g:jedi#smart_auto_mappings = 0  " disable auto-completion when typing `from module.name<space>`
 
+"let g:deoplete#enable_at_startup = 1
+"autocmd CompleteDone * pclose!
+"
+"inoremap <silent><expr> <TAB>
+"\ pumvisible() ? "\<C-n>" :
+"\ <SID>check_back_space() ? "\<TAB>" :
+"\ deoplete#mappings#manual_complete()
+"function! s:check_back_space() abort "{{{
+"let col = col('.') - 1
+"return !col || getline('.')[col - 1]  =~ '\s'
+"endfunction"}}}
+
+
 " YCM
 let g:ycm_autoclose_preview_window_after_insertion = 1
 
@@ -375,9 +352,6 @@ let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
 if executable('ag')
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 endif
-
-" CtrlP mappings
-nnoremap <silent> <Leader>l :CtrlPBuffer<CR>
 
 " Vimwiki
 " Use Markdown wiki markup
