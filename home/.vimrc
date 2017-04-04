@@ -153,7 +153,6 @@ augroup AutoFileReload
     au FocusGained,BufEnter * :silent! !
 augroup END
 
-
 " ------------
 " Key mappings
 " ------------
@@ -223,7 +222,6 @@ nnoremap <silent> <Leader>l :CtrlPBuffer<CR>
 "endif
 " Sexy Scroller mouse workarounds
 " let g:SexyScroller_MinLines = 15
-
 
 " ---------------
 " Plugin settings
