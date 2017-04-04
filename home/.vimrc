@@ -187,42 +187,6 @@ nnoremap <Leader>b :bnext<CR>
 " Buffer list
 nnoremap <silent> <Leader>l :CtrlPBuffer<CR>
 
-" nnoremap <silent> <MouseDown> <MouseDown>:call s:CheckForChange(1)<CR>
-" nnoremap <silent> <MouseUp> <MouseUp>:call s:CheckForChange(1)<CR>
-
-" When switching buffers, preserve window view.
-"if v:version >= 700
-  "au BufLeave * if !&diff | let b:winview = winsaveview() | endif
-  "au BufEnter * if exists('b:winview') && !&diff | call winrestview(b:winview) | unlet! b:winview | endif
-"endif
-
-"let g:SexyScroller_AutocmdsEnabled = 0
-"
-"if g:SexyScroller_AutocmdsEnabled == 0
-"    " Note: pretty crappy workaround because of double call, but it works...
-"    nnoremap <silent> <C-U> :call g:SexyScroller_ScrollToCursor(0)<CR><C-U>:call g:SexyScroller_ScrollToCursor(1)<CR>
-"    nnoremap <silent> <C-D> :call g:SexyScroller_ScrollToCursor(0)<CR><C-D>:call g:SexyScroller_ScrollToCursor(1)<CR>
-"    nnoremap <silent> <C-F> :call g:SexyScroller_ScrollToCursor(0)<CR><C-F>:call g:SexyScroller_ScrollToCursor(1)<CR>
-"    nnoremap <silent> <C-B> :call g:SexyScroller_ScrollToCursor(0)<CR><C-B>:call g:SexyScroller_ScrollToCursor(1)<CR>
-"    nnoremap <silent> <PageUp> :call g:SexyScroller_ScrollToCursor(0)<CR><PageUp>:call g:SexyScroller_ScrollToCursor(1)<CR>
-"    nnoremap <silent> <PageDown> :call g:SexyScroller_ScrollToCursor(0)<CR><PageDown>:call g:SexyScroller_ScrollToCursor(1)<CR>
-"
-"    augroup Custom_Smooth_Scroller
-"      autocmd!
-"      autocmd WinEnter * call g:SexyScroller_ScrollToCursor(0)
-"      "autocmd BufWinEnter * call SexyScroller_ScrollToCursor(0)
-"      "autocmd BufWinEnter * call SexyScroller_ScrollToCursor(0) | echo "bufwinenter"
-"      "autocmd BufWinLeave * call SexyScroller_ScrollToCursor(0)
-"      "autocmd BufReadPost * call SexyScroller_ScrollToCursor(0)
-"      " autocmd BufEnter * call SexyScroller_ScrollToCursor(1)
-"      "autocmd BufWinLeave * call SexyScroller_ScrollToCursor(0)
-"      "autocmd BufWinEnter * call SexyScroller_ScrollToCursor(0)
-"      "autocmd InsertLeave * call SexyScroller_ScrollToCursor(0)
-"    augroup END
-"endif
-" Sexy Scroller mouse workarounds
-" let g:SexyScroller_MinLines = 15
-
 " ---------------
 " Plugin settings
 " ---------------
