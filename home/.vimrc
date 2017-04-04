@@ -55,9 +55,6 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
-
-
-
 " --------------------
 " Settings and options
 " --------------------
@@ -102,18 +99,6 @@ if !has('nvim')
     "     map! <Esc>OF <End>
     " endif
 endif
-
-" Different colors between GUI and terminal
-"if has("gui_running")
-"    " For base16 colors in terminal
-"    let base16colorspace=256
-"
-"    " Color scheme (do `:source ~/.vimrc` when switching)
-"    syntax enable
-"    colorscheme base16-ocean
-"    set background=dark
-"else
-"endif
 
 " Solarized
 let g:solarized_termcolors=16
