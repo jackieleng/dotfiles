@@ -24,7 +24,6 @@ Plugin 'ctrlpvim/ctrlp.vim'  " Fork of kien's unmaintained version
 Plugin 'moll/vim-bbye'
 "Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-fugitive'
-Plugin 'junegunn/goyo.vim'
 " Plugin 'davidhalter/jedi-vim'  " To make this work with neovim you need to install the neovim python package (i.e.: pip install neovim) or compile neovim with python extensions
 Plugin 'christoomey/vim-tmux-navigator'
 "Plugin 'jackieleng/sexy_scroller.vim'  " fork of joeytwiddle's repo
@@ -41,8 +40,8 @@ Plugin 'vimwiki/vimwiki'
 
 " Color schemes
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'chriskempson/base16-vim'
-Plugin 'tomasr/molokai'
+" Plugin 'chriskempson/base16-vim'
+" Plugin 'tomasr/molokai'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
