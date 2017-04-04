@@ -264,7 +264,6 @@ endif
 " airline custom symbols when not using powerline fonts
 " The unicode symbols will work if you do: sudo apt-get install ttf-ancient-fonts
 " This installs a Symbola font
-set encoding=utf-8
 let g:airline_left_sep = ""
 let g:airline_right_sep = ""
 let g:airline_symbols.linenr = ""
