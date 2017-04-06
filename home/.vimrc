@@ -22,9 +22,7 @@ Plugin 'xolox/vim-session'
 Plugin 'xolox/vim-misc'    " Needed by vim-session
 Plugin 'ctrlpvim/ctrlp.vim'  " Fork of kien's unmaintained version
 Plugin 'moll/vim-bbye'
-Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-fugitive'
-Plugin 'junegunn/goyo.vim'
 " Plugin 'davidhalter/jedi-vim'  " To make this work with neovim you need to install the neovim python package (i.e.: pip install neovim) or compile neovim with python extensions
 Plugin 'christoomey/vim-tmux-navigator'
 "Plugin 'jackieleng/sexy_scroller.vim'  " fork of joeytwiddle's repo
@@ -35,11 +33,12 @@ Plugin 'majutsushi/tagbar'   " Tagbar needs ctags (sudo apt-get install exuberan
 " Plugin 'haya14busa/incsearch.vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'vimwiki/vimwiki'
+Plugin 'w0rp/ale'
 
 " Color schemes
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'chriskempson/base16-vim'
-Plugin 'tomasr/molokai'
+"Plugin 'chriskempson/base16-vim'
+"Plugin 'tomasr/molokai'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -55,9 +54,6 @@ filetype plugin indent on    " required
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
-
-
-
 
 " --------------------
 " Settings and options
@@ -89,6 +85,7 @@ set shell=/bin/bash        " syntastic needs bash (and not e.g. fish)
 set wildmode=longest:list  " tab completion similar to Bash (as far as possible without ambiguity)
 set inccommand=split       " live preview for substitute (Neovim option)
 let g:netrw_liststyle=3    " nicer Netrw style
+set encoding=utf-8
 
 if !has('nvim')
     " For tmux
@@ -103,27 +100,12 @@ if !has('nvim')
     " endif
 endif
 
-" Different colors between GUI and terminal
-"if has("gui_running")
-"    " For base16 colors in terminal
-"    let base16colorspace=256
-"
-"    " Color scheme (do `:source ~/.vimrc` when switching)
-"    syntax enable
-"    colorscheme base16-ocean
-"    set background=dark
-"else
-"endif
-
 " Solarized
 let g:solarized_termcolors=16
 syntax enable
 set background=light
 colorscheme solarized
-" This is needed for solarized because the sign column is hard to read with
-" gitgutter:
-" highlight clear SignColumn
-call togglebg#map("<F6>")
+call togglebg#map("<F5>")
 
 " Search highlight color (hi = highlight)
 " hi Search guibg=LightGreen
@@ -171,29 +153,21 @@ augroup AutoFileReload
     au FocusGained,BufEnter * :silent! !
 augroup END
 
-
 " ------------
 " Key mappings
 " ------------
-
-" Leader key
-let mapleader = ","
-
-" Press Space to turn off highlighting and clear any message already displayed
-nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
-
-" Map horizontal scrolling to CTRL-L/H (note that CTRL-L is graphic reload on default)
-" map <C-L> 3zl
-" map <C-H> 3zh
-" Map vertical scroll
-" map <C-K> <C-Y>
-" map <C-J> <C-E>
 
 " Easier window switching
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
+
+" Leader key
+let mapleader = " "
+
+" Turn off highlighting
+nnoremap <silent> <Leader>n :noh<CR>
 
 " Resizing with leader key
 nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
@@ -205,52 +179,13 @@ nnoremap <silent> <Leader>f :FZF<CR>
 " Toggle line numbers
 nmap <F12> :set invnumber<CR>
 
-" Easier tab movement
-nnoremap <Leader>tc :tabnew<CR>
-"nnoremap <Leader>tp :tabprev<CR>
-"nnoremap <Leader>tn :tabnext<CR>
-
 " Easier buffer switching
 " nnoremap <Leader>l :buffers<CR>:buffer<Space>
-nnoremap <Leader>bp :bprevious<CR>
-nnoremap <Leader>bn :bnext<CR>
+nnoremap <Leader>B :bprevious<CR>
+nnoremap <Leader>b :bnext<CR>
 
-" nnoremap <silent> <MouseDown> <MouseDown>:call s:CheckForChange(1)<CR>
-" nnoremap <silent> <MouseUp> <MouseUp>:call s:CheckForChange(1)<CR>
-
-" When switching buffers, preserve window view.
-"if v:version >= 700
-  "au BufLeave * if !&diff | let b:winview = winsaveview() | endif
-  "au BufEnter * if exists('b:winview') && !&diff | call winrestview(b:winview) | unlet! b:winview | endif
-"endif
-
-"let g:SexyScroller_AutocmdsEnabled = 0
-"
-"if g:SexyScroller_AutocmdsEnabled == 0
-"    " Note: pretty crappy workaround because of double call, but it works...
-"    nnoremap <silent> <C-U> :call g:SexyScroller_ScrollToCursor(0)<CR><C-U>:call g:SexyScroller_ScrollToCursor(1)<CR>
-"    nnoremap <silent> <C-D> :call g:SexyScroller_ScrollToCursor(0)<CR><C-D>:call g:SexyScroller_ScrollToCursor(1)<CR>
-"    nnoremap <silent> <C-F> :call g:SexyScroller_ScrollToCursor(0)<CR><C-F>:call g:SexyScroller_ScrollToCursor(1)<CR>
-"    nnoremap <silent> <C-B> :call g:SexyScroller_ScrollToCursor(0)<CR><C-B>:call g:SexyScroller_ScrollToCursor(1)<CR>
-"    nnoremap <silent> <PageUp> :call g:SexyScroller_ScrollToCursor(0)<CR><PageUp>:call g:SexyScroller_ScrollToCursor(1)<CR>
-"    nnoremap <silent> <PageDown> :call g:SexyScroller_ScrollToCursor(0)<CR><PageDown>:call g:SexyScroller_ScrollToCursor(1)<CR>
-"
-"    augroup Custom_Smooth_Scroller
-"      autocmd!
-"      autocmd WinEnter * call g:SexyScroller_ScrollToCursor(0)
-"      "autocmd BufWinEnter * call SexyScroller_ScrollToCursor(0)
-"      "autocmd BufWinEnter * call SexyScroller_ScrollToCursor(0) | echo "bufwinenter"
-"      "autocmd BufWinLeave * call SexyScroller_ScrollToCursor(0)
-"      "autocmd BufReadPost * call SexyScroller_ScrollToCursor(0)
-"      " autocmd BufEnter * call SexyScroller_ScrollToCursor(1)
-"      "autocmd BufWinLeave * call SexyScroller_ScrollToCursor(0)
-"      "autocmd BufWinEnter * call SexyScroller_ScrollToCursor(0)
-"      "autocmd InsertLeave * call SexyScroller_ScrollToCursor(0)
-"    augroup END
-"endif
-" Sexy Scroller mouse workarounds
-" let g:SexyScroller_MinLines = 15
-
+" Buffer list
+nnoremap <silent> <Leader>l :CtrlPBuffer<CR>
 
 " ---------------
 " Plugin settings
@@ -259,26 +194,14 @@ nnoremap <Leader>bn :bnext<CR>
 " Let airline/statusline appear all the time
 set laststatus=2
 
-" Enable the list of buffers
-let g:airline#extensions#tabline#enabled = 1
+" Don't load all extensions, only those we want 
+let g:airline_extensions = ['branch', 'tabline', 'ctrlp']
 
 " Show just the filename
 let g:airline#extensions#tabline#fnamemod = ':t'
 
-" enable/disable detection of whitespace errors
-let g:airline#extensions#whitespace#enabled = 0
-
-" Disable gitgutter hunks in airline
-let g:airline#extensions#hunks#enabled = 0
-
-" Do not use powerline fonts for airline
-let g:airline_powerline_fonts = 0
-
-" Disable syntastic integration
-let g:airline#extensions#syntastic#enabled = 0
-
-" Disable tagbar integration
-let g:airline#extensions#tagbar#enabled = 0
+" Exclude airline from preview window (causes bugs with YCM)
+let g:airline_exclude_preview = 1
 
 " Nicer airline symbols
 if !exists('g:airline_symbols')
@@ -288,7 +211,6 @@ endif
 " airline custom symbols when not using powerline fonts
 " The unicode symbols will work if you do: sudo apt-get install ttf-ancient-fonts
 " This installs a Symbola font
-set encoding=utf-8
 let g:airline_left_sep = ""
 let g:airline_right_sep = ""
 let g:airline_symbols.linenr = ""
@@ -299,21 +221,6 @@ let g:airline_symbols.space = " "
 let g:airline_symbols.whitespace = "Ξ"
 let g:airline_symbols.modified = '+'
 let g:airline_symbols.readonly = "RO"
-
-" Custom mode names in g:airline_section_a
-let g:airline_mode_map = {
-  \ '__' : '-',
-  \ 'n'  : 'N',
-  \ 'i'  : 'I',
-  \ 'R'  : 'R',
-  \ 'c'  : 'C',
-  \ 'v'  : 'V',
-  \ 'V'  : 'V',
-  \ '' : 'V',
-  \ 's'  : 'S',
-  \ 'S'  : 'S',
-  \ '' : 'S',
-  \ }
 
 " Let's just disable it, mode names are shown always anyway.
 let g:airline_section_a = ""
@@ -375,9 +282,6 @@ let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
 if executable('ag')
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 endif
-
-" CtrlP mappings
-nnoremap <silent> <Leader>l :CtrlPBuffer<CR>
 
 " Vimwiki
 " Use Markdown wiki markup
