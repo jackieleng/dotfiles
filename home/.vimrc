@@ -181,8 +181,8 @@ nmap <F12> :set invnumber<CR>
 
 " Easier buffer switching
 " nnoremap <Leader>l :buffers<CR>:buffer<Space>
-nnoremap <Leader>B :bprevious<CR>
-nnoremap <Leader>b :bnext<CR>
+nnoremap gB :bprevious<CR>
+nnoremap gb :bnext<CR>
 
 " Buffer list
 nnoremap <silent> <Leader>l :CtrlPBuffer<CR>
