@@ -83,9 +83,13 @@ let &showbreak='↪ '
 set scrolloff=1            " lines visible below or above cursor
 set shell=/bin/bash        " syntastic needs bash (and not e.g. fish)
 set wildmode=longest:list  " tab completion similar to Bash (as far as possible without ambiguity)
-set inccommand=split       " live preview for substitute (Neovim option)
 let g:netrw_liststyle=3    " nicer Netrw style
 set encoding=utf-8
+
+" Neovim options
+if has('nvim')
+    set inccommand=split       " live preview for substitute (Neovim option)
+endif
 
 if !has('nvim')
     " For tmux
