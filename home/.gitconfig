@@ -13,3 +13,5 @@
 	st = status
 	br = branch
 	unstage = reset HEAD --
+[rebase]
+	autosquash = true
