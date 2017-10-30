@@ -34,6 +34,7 @@ Plugin 'majutsushi/tagbar'   " Tagbar needs ctags (sudo apt-get install exuberan
 Plugin 'pangloss/vim-javascript'
 Plugin 'vimwiki/vimwiki'
 Plugin 'w0rp/ale'
+Plugin 'junegunn/fzf.vim'
 
 " Color schemes
 Plugin 'altercation/vim-colors-solarized'
