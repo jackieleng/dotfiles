@@ -90,9 +90,6 @@ set encoding=utf-8
 " Neovim options
 if has('nvim')
     set inccommand=split       " live preview for substitute (Neovim option)
-    " https://github.com/neovim/neovim/issues/5990
-    let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 0
-    set guicursor=
 endif
 
 if !has('nvim')
