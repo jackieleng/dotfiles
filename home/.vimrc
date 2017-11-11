@@ -34,6 +34,7 @@ Plugin 'majutsushi/tagbar'   " Tagbar needs ctags (sudo apt-get install exuberan
 Plugin 'pangloss/vim-javascript'
 Plugin 'vimwiki/vimwiki'
 Plugin 'w0rp/ale'
+Plugin 'junegunn/fzf.vim'
 
 " Color schemes
 Plugin 'altercation/vim-colors-solarized'
@@ -89,6 +90,9 @@ set encoding=utf-8
 " Neovim options
 if has('nvim')
     set inccommand=split       " live preview for substitute (Neovim option)
+    " https://github.com/neovim/neovim/issues/5990
+    let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 0
+    set guicursor=
 endif
 
 if !has('nvim')
