@@ -185,6 +185,9 @@ nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
 " FZF
 nnoremap <silent> <Leader>f :FZF<CR>
 
+" Only search git files
+nnoremap <silent> <Leader>g :GFiles<CR>
+
 " Toggle line numbers
 nmap <F12> :set invnumber<CR>
 
