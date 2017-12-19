@@ -35,6 +35,7 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'vimwiki/vimwiki'
 Plugin 'w0rp/ale'
 Plugin 'junegunn/fzf.vim'
+Plugin 'tpope/vim-unimpaired'
 
 " Color schemes
 Plugin 'altercation/vim-colors-solarized'
@@ -187,13 +188,8 @@ nnoremap <silent> <Leader>f :FZF<CR>
 " Toggle line numbers
 nmap <F12> :set invnumber<CR>
 
-" Easier buffer switching
-" nnoremap <Leader>l :buffers<CR>:buffer<Space>
-nnoremap gB :bprevious<CR>
-nnoremap gb :bnext<CR>
-
-" Buffer list
-nnoremap <silent> <Leader>l :CtrlPBuffer<CR>
+" List buffers
+nnoremap <silent> <Leader>b :Buffers<CR>
 
 " ---------------
 " Plugin settings
