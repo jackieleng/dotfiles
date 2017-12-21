@@ -35,7 +35,7 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'vimwiki/vimwiki'
 Plugin 'w0rp/ale'
 Plugin 'junegunn/fzf.vim'
-Plugin 'tpope/vim-unimpaired'
+Plugin 'tpope/vim-commentary'
 
 " Color schemes
 Plugin 'altercation/vim-colors-solarized'
