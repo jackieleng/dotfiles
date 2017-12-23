@@ -35,6 +35,7 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'vimwiki/vimwiki'
 Plugin 'w0rp/ale'
 Plugin 'junegunn/fzf.vim'
+Plugin 'tpope/vim-commentary'
 
 " Color schemes
 Plugin 'altercation/vim-colors-solarized'
@@ -181,16 +182,14 @@ nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
 " FZF
 nnoremap <silent> <Leader>f :FZF<CR>
 
+" Only search git files
+nnoremap <silent> <Leader>g :GFiles<CR>
+
 " Toggle line numbers
 nmap <F12> :set invnumber<CR>
 
-" Easier buffer switching
-" nnoremap <Leader>l :buffers<CR>:buffer<Space>
-nnoremap gB :bprevious<CR>
-nnoremap gb :bnext<CR>
-
-" Buffer list
-nnoremap <silent> <Leader>l :CtrlPBuffer<CR>
+" List buffers
+nnoremap <silent> <Leader>b :Buffers<CR>
 
 " ---------------
 " Plugin settings
