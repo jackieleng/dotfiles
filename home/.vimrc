@@ -20,7 +20,6 @@ Plugin 'hdima/python-syntax'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'xolox/vim-session'
 Plugin 'xolox/vim-misc'    " Needed by vim-session
-Plugin 'ctrlpvim/ctrlp.vim'  " Fork of kien's unmaintained version
 Plugin 'moll/vim-bbye'
 Plugin 'tpope/vim-fugitive'
 " Plugin 'davidhalter/jedi-vim'  " To make this work with neovim you need to install the neovim python package (i.e.: pip install neovim) or compile neovim with python extensions
@@ -199,7 +198,7 @@ nnoremap <silent> <Leader>b :Buffers<CR>
 set laststatus=2
 
 " Don't load all extensions, only those we want 
-let g:airline_extensions = ['branch', 'tabline', 'ctrlp']
+let g:airline_extensions = ['branch', 'tabline']
 
 " Show just the filename
 let g:airline#extensions#tabline#fnamemod = ':t'
@@ -275,12 +274,6 @@ nmap <F8> :TagbarToggle<CR>
 
 " YCM
 let g:ycm_autoclose_preview_window_after_insertion = 1
-
-" Speed up CtrlP
-let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
-if executable('ag')
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-endif
 
 " Vimwiki
 " Use Markdown wiki markup
