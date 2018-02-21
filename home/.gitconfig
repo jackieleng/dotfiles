@@ -10,7 +10,7 @@
 	ls = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
 	co = checkout
 	ci = commit
-	st = status --short --branch
+	st = status
 	br = branch
 	unstage = reset HEAD --
 	g = grep --break --heading --line-number -i
