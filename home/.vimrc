@@ -205,6 +205,7 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 
 " Exclude airline from preview window (causes bugs with YCM)
 let g:airline_exclude_preview = 1
+nnoremap <silent> <Leader>d :YcmCompleter GoTo<CR>
 
 " Nicer airline symbols
 if !exists('g:airline_symbols')
