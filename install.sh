@@ -74,7 +74,7 @@ fi
 
 if [ ! -e ~/.git-prompt.sh ]; then
     echo "~/.git-prompt.sh not found; downloading..."
-    curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh -o ~/.git-prompt.sh
+    wget https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh -O ~/.git-prompt.sh
 fi
 
 echo "Done!"
