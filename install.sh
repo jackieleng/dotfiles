@@ -59,14 +59,6 @@ done
 echo "cd back to $STARTDIR"
 cd $STARTDIR
 
-GTKCSS=~/.config/gtk-3.0/gtk.css
-if [ -h "$GTKCSS" ]; then
-    rm "$GTKCSS"
-    echo "Removed    $GTKCSS"
-fi
-ln -s ${PWD}/gtk.css $GTKCSS
-echo "Symlinked  ${PWD}/gtk.css to $GTKCSS"
-
 # Download additional dependencies
 
 if [ ! -e ~/.vim/bundle/Vundle.vim ]; then
