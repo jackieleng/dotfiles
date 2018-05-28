@@ -66,11 +66,6 @@ if [ ! -e ~/.vim/bundle/Vundle.vim ]; then
     git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 fi
 
-if [ ! -d ~/.config/base16-shell ]; then
-    echo "Base16-shell not found, cloning..."
-    git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
-fi
-
 if [ ! -d ~/.fzf ]; then
     echo "FZF not found; installing..."
     git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf

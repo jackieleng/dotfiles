@@ -189,16 +189,6 @@ fi
 # Set correct $TERM for tmux
 export TERM=xterm-256color
 
-# Base16 Shell
-export BASE16_SHELL="$HOME/.config/base16-shell/base16-ocean.dark.sh"
-alias base16="[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL"
-
-# Vim + Base16 shell
-alias vimb="base16 && vim"
-
-# Nvim + Base16 shell
-alias nvimb="base16 && nvim"
-
 # Set default editor
 export VISUAL=nvim
 export EDITOR="$VISUAL"
