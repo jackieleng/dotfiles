@@ -1,0 +1,7 @@
+$include /etc/inputrc
+
+# Display colored completions
+set colored-stats on
+
+# Ignore case for tab completion.
+set completion-ignore-case on
