@@ -1,7 +1,8 @@
 $include /etc/inputrc
 
 # Display colored completions
-set colored-stats on
+# TODO: disabled for now because it creates  blinking text sometimes (e.g. pressing ssh <TAB>)
+# set colored-stats on
 
 # Ignore case for tab completion.
 set completion-ignore-case on
