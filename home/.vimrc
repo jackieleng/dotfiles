@@ -233,7 +233,9 @@ let g:airline_section_a = ""
 let g:airline_section_z = '%3p%% ' . g:airline_symbols.linenr . ' %l,%c'
 
 " Increase git gutter update rate
-set updatetime=750
+set updatetime=100
+" Fix signs not updating after focussing in tmux.
+let g:gitgutter_terminal_reports_focus=0
 
 " Autosave and load sessions at close/start
 let g:session_autoload = 'yes'
