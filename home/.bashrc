@@ -141,8 +141,7 @@ function venv {
 
 # Color codes need to be wrappend around \[ and \] to avoid line wrapping
 # issues. See: http://askubuntu.com/a/24422
-# TODO: why are there three slashes in prompt char, i.e.: \\\$? One should be enough.
-PROMPT_COMMAND='__git_ps1 "\[\e[1;34m\]$(venv)\w\[\e[0m\]" "\[\e[1;34m\]\\\$\[\e[0m\] "'
+PROMPT_COMMAND='__git_ps1 "\[\e[1;34m\]$(venv)\w\[\e[0m\]" "\[\e[1;34m\]\$\[\e[0m\] "'
 
 
 # Bookmarking (see: http://jeroenjanssens.com/2013/08/16/quickly-navigate-your-filesystem-from-the-command-line.html)
