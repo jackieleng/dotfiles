@@ -115,11 +115,11 @@ fi
 
 
 # Prompt
-source ~/.git-prompt.sh  # get this from the git source
 GIT_PS1_SHOWDIRTYSTATE=1
 GIT_PS1_SHOWSTASHSTATE=1
 GIT_PS1_SHOWUNTRACKEDFILES=1
 GIT_PS1_SHOWCOLORHINTS=1
+source ~/.git-prompt.sh  # get this from the git source
 
 #function _prompt_command() {
     #PS1='\[\e[1;34m\]\w\e[m$(__git_ps1)\n\$\[\e[0m\] '
