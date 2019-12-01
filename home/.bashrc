@@ -203,3 +203,6 @@ fi
 # redraw/refresh immediatly when switching tabs.
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# Direnv
+eval "$(direnv hook bash)"

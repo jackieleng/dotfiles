@@ -35,6 +35,7 @@ Plugin 'vimwiki/vimwiki'
 Plugin 'w0rp/ale'
 Plugin 'junegunn/fzf.vim'
 Plugin 'tpope/vim-commentary'
+Plugin 'ambv/black'
 
 " Color schemes
 Plugin 'altercation/vim-colors-solarized'
@@ -108,7 +109,7 @@ endif
 " Solarized
 let g:solarized_termcolors=16
 syntax enable
-set background=light
+set background=dark
 colorscheme solarized
 call togglebg#map("<F5>")
 
@@ -284,3 +285,5 @@ let g:vimwiki_list = [{'path': '~/vimwiki', 'syntax': 'markdown', 'ext': '.md'}]
 
 " python-syntax
 let python_highlight_all=1
+
+let g:black_linelength = 79
