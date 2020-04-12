@@ -109,7 +109,7 @@ endif
 " Solarized
 let g:solarized_termcolors=16
 syntax enable
-set background=dark
+set background=light
 colorscheme solarized
 call togglebg#map("<F5>")
 
