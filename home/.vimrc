@@ -4,58 +4,36 @@ filetype off                  " required
 " FZF (external plugin)
 set rtp+=~/.fzf
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+" Specify a directory for plugins
+" - For Neovim: stdpath('data') . '/plugged'
+" - Avoid using standard Vim directory names like 'plugin'
+call plug#begin('~/.vim/plugged')
 
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'airblade/vim-gitgutter'
+Plug 'xolox/vim-session'
+Plug 'xolox/vim-misc'    " Needed by vim-session
+Plug 'moll/vim-bbye'
+Plug 'tpope/vim-fugitive'
+Plug 'christoomey/vim-tmux-navigator'
+"Plug 'simnalamburt/vim-mundo'  " fork of Gundo with neovim support
+"Plug 'kshenoy/vim-signature'
+Plug 'majutsushi/tagbar'   " Tagbar needs ctags (sudo apt-get install exuberant-ctags)
+Plug 'pangloss/vim-javascript'
+Plug 'vimwiki/vimwiki'
+Plug 'w0rp/ale'
+Plug 'junegunn/fzf.vim'
+Plug 'tpope/vim-commentary'
+Plug 'psf/black', { 'branch': 'stable' }
+Plug 'ycm-core/YouCompleteMe', { 'do': './install.py' }
 
-" My plugins
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'hdima/python-syntax'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'xolox/vim-session'
-Plugin 'xolox/vim-misc'    " Needed by vim-session
-Plugin 'moll/vim-bbye'
-Plugin 'tpope/vim-fugitive'
-" Plugin 'davidhalter/jedi-vim'  " To make this work with neovim you need to install the neovim python package (i.e.: pip install neovim) or compile neovim with python extensions
-Plugin 'christoomey/vim-tmux-navigator'
-"Plugin 'jackieleng/sexy_scroller.vim'  " fork of joeytwiddle's repo
-"Plugin 'simnalamburt/vim-mundo'  " fork of Gundo with neovim support
-"Plugin 'kshenoy/vim-signature'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'majutsushi/tagbar'   " Tagbar needs ctags (sudo apt-get install exuberant-ctags)
-" Plugin 'haya14busa/incsearch.vim'
-Plugin 'pangloss/vim-javascript'
-Plugin 'vimwiki/vimwiki'
-Plugin 'w0rp/ale'
-Plugin 'junegunn/fzf.vim'
-Plugin 'tpope/vim-commentary'
-Plugin 'ambv/black'
+" Color scheme
+Plug 'altercation/vim-colors-solarized'
 
-" Color schemes
-Plugin 'altercation/vim-colors-solarized'
-"Plugin 'chriskempson/base16-vim'
-"Plugin 'tomasr/molokai'
+" Initialize plugin system
+call plug#end()
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
 
 " --------------------
 " Settings and options
@@ -63,6 +41,7 @@ filetype plugin indent on    " required
 
 " Turn backup off, since most stuff is in SVN, git et.c anyway...
 set nobackup
+set nowritebackup
 set nowb
 set noswapfile
 
@@ -237,6 +216,8 @@ let g:airline_section_z = '%3p%% ' . g:airline_symbols.linenr . ' %l,%c'
 set updatetime=100
 " Fix signs not updating after focussing in tmux.
 let g:gitgutter_terminal_reports_focus=0
+" Restore gitgutter old behavior that fixes unreadable sign column
+highlight! link SignColumn LineNr
 
 " Autosave and load sessions at close/start
 let g:session_autoload = 'yes'
@@ -247,34 +228,8 @@ set sessionoptions-=help
 " Don't persist options and mappings because it can corrupt sessions.
 set sessionoptions-=options
 
-" Custom vim-tmux-navigator settings
-let g:tmux_navigator_no_mappings = 1
-nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
-nnoremap <silent> <c-j> :TmuxNavigateDown<cr>
-nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
-nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
-" nnoremap <silent> {c-\} :TmuxNavigatePrevious<cr>  " don't need
-
-" Incsearch
-" map /  <Plug>(incsearch-forward)
-" map ?  <Plug>(incsearch-backward)
-" map g/ <Plug>(incsearch-stay)
-" " :h g:incsearch#auto_nohlsearch
-" let g:incsearch#auto_nohlsearch = 0
-" map n  <Plug>(incsearch-nohl-n)
-" map N  <Plug>(incsearch-nohl-N)
-" map *  <Plug>(incsearch-nohl-*)
-" map #  <Plug>(incsearch-nohl-#)
-" map g* <Plug>(incsearch-nohl-g*)
-" map g# <Plug>(incsearch-nohl-g#)
-
 " Tagbar
 nmap <F8> :TagbarToggle<CR>
-
-" Jedi-vim
-" let g:jedi#show_call_signatures = 0  " disable function arg pop-up
-" let g:jedi#popup_on_dot = 0  " disable automatic completion on dot (use <C-Space>)
-" let g:jedi#smart_auto_mappings = 0  " disable auto-completion when typing `from module.name<space>`
 
 " YCM
 let g:ycm_autoclose_preview_window_after_insertion = 1
