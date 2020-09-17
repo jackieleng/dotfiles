@@ -238,7 +238,5 @@ let g:ycm_autoclose_preview_window_after_insertion = 1
 " Use Markdown wiki markup
 let g:vimwiki_list = [{'path': '~/vimwiki', 'syntax': 'markdown', 'ext': '.md'}]
 
-" python-syntax
-let python_highlight_all=1
-
+" Black
 let g:black_linelength = 79
