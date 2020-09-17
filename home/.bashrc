@@ -179,12 +179,6 @@ alias vhalt='vagrant halt'
 alias vglob='vagrant global-status'
 alias v='nvim'
 
-# Fortran compiler stuff
-COMPVARSFILE="/opt/intel/composer_xe_2015.1.133/bin/compilervars.sh"
-if [ -e $COMPVARSFILE ]; then
-    source /opt/intel/composer_xe_2015.1.133/bin/compilervars.sh intel64
-fi
-
 # Set correct $TERM for tmux
 export TERM=xterm-256color
 
@@ -206,3 +200,4 @@ fi
 
 # Direnv
 eval "$(direnv hook bash)"
+alias tmux='direnv exec / tmux'
