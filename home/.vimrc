@@ -238,9 +238,6 @@ let g:ycm_autoclose_preview_window_after_insertion = 1
 " Use Markdown wiki markup
 let g:vimwiki_list = [{'path': '~/vimwiki', 'syntax': 'markdown', 'ext': '.md'}]
 
-" Black
-let g:black_linelength = 79
-
 " Specify an interpreter that has the Neovim Python package (pynvim)
 " https://github.com/deoplete-plugins/deoplete-jedi/wiki/Setting-up-Python-for-Neovim#using-virtual-environments
 let g:python_host_prog = '/usr/bin/python'
