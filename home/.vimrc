@@ -7,7 +7,7 @@ set rtp+=~/.fzf
 " Specify a directory for plugins
 " - For Neovim: stdpath('data') . '/plugged'
 " - Avoid using standard Vim directory names like 'plugin'
-call plug#begin('~/.vim/plugged')
+call plug#begin(stdpath('data') . '/plugged')
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -91,21 +91,6 @@ syntax enable
 set background=light
 colorscheme solarized
 call togglebg#map("<F5>")
-
-" Search highlight color (hi = highlight)
-" hi Search guibg=LightGreen
-
-if has("gui_running")
-    " Vim window startup size
-    set lines=100 columns=207
-    " Set the font
-    set guifont=DejaVu\ Sans\ Mono\ 10
-
-    set guioptions-=m  "remove menu bar
-    set guioptions-=T  "remove toolbar
-    set guioptions-=r  "remove right-hand scroll bar
-    set guioptions-=L  "remove left-hand scroll bar
-endif
 
 set tabstop=4     " spaces per tab
 set softtabstop=4 " number of columns when hitting tab in insert mode
@@ -197,12 +182,13 @@ endif
 " This installs a Symbola font
 let g:airline_left_sep = ""
 let g:airline_right_sep = ""
-let g:airline_symbols.linenr = ""
+let g:airline_symbols.linenr = '␊'
 let g:airline_symbols.paste = "∥"
-let g:airline_symbols.branch = "⎇ "  " note the extra space
-" let g:airline_symbols.branch = ""  " note the extra space
+let g:airline_symbols.branch = "⎇"
 let g:airline_symbols.space = " "
 let g:airline_symbols.whitespace = "Ξ"
+let g:airline_symbols.spell = 'Ꞩ'
+let g:airline_symbols.notexists = 'Ɇ'
 let g:airline_symbols.modified = '+'
 let g:airline_symbols.readonly = "RO"
 
