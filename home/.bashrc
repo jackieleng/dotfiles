@@ -172,3 +172,9 @@ fi
 # Direnv
 eval "$(direnv hook bash)"
 alias tmux='direnv exec / tmux'
+
+
+# Start tmux automatically (https://www.markhansen.co.nz/auto-start-tmux/)
+if command -v tmux &> /dev/null && [ -n "$PS1" ] && [ -z "$TMUX" ]; then
+    tmux new -As 0
+fi
