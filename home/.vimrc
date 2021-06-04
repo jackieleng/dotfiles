@@ -12,8 +12,6 @@ call plug#begin(stdpath('data') . '/plugged')
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'airblade/vim-gitgutter'
-Plug 'xolox/vim-session'
-Plug 'xolox/vim-misc'    " Needed by vim-session
 Plug 'moll/vim-bbye'
 Plug 'tpope/vim-fugitive'
 Plug 'christoomey/vim-tmux-navigator'
@@ -204,10 +202,6 @@ set updatetime=100
 let g:gitgutter_terminal_reports_focus=0
 " Restore gitgutter old behavior that fixes unreadable sign column
 highlight! link SignColumn LineNr
-
-" Autosave and load sessions at close/start
-let g:session_autoload = 'yes'
-let g:session_autosave = 'yes'
 
 " If you don't want help windows to be restored:
 set sessionoptions-=help
