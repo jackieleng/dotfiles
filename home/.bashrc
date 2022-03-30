@@ -143,13 +143,6 @@ function venv {
 # issues. See: http://askubuntu.com/a/24422
 PROMPT_COMMAND='__git_ps1 "\[\e[1;34m\]$(venv)\w\[\e[0m\]" "\[\e[1;34m\]\$\[\e[0m\] "'
 
-# More aliases
-alias ..='cd ..'
-alias ...='cd ../..'
-alias ....='cd ../../..'
-alias .....='cd ../../../..'
-alias v='nvim'
-
 # Set correct $TERM for tmux
 export TERM=xterm-256color
 
@@ -178,3 +171,7 @@ alias tmux='direnv exec / tmux'
 if command -v tmux &> /dev/null && [ -n "$PS1" ] && [ -z "$TMUX" ]; then
     tmux new -As 0
 fi
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
