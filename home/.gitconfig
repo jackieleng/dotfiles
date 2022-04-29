@@ -14,5 +14,6 @@
 	br = branch
 	unstage = reset HEAD --
 	g = grep --break --heading --line-number -i
+	sw = switch
 [rebase]
 	autosquash = true
